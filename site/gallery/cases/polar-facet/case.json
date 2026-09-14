@@ -1,0 +1,20 @@
+{
+  "slug": "polar-facet",
+  "starter": "polar-facet",
+  "completedCase": "chord-circular-stacked-facet-concat",
+  "data": ["data/chord_polar_line_nodes.csv", "data/chord_polar_line_links.csv"],
+  "blocks": [
+    {
+      "chartType": "Chord",
+      "bindings": { "key": "node_id", "source": "source", "target": "target", "value": "flow_twh" }
+    },
+    {
+      "chartType": "CircularStackedBarChart",
+      "bindings": { "theta": "generation_gwh", "radius": "week", "color": "energy_source", "series": "energy_source" }
+    }
+  ],
+  "composition": [
+    { "type": "facet", "field": "node_id", "coordinateSystem": "Polar" },
+    { "type": "concat", "direction": "radial", "sharedChannels": ["angle"] }
+  ]
+}

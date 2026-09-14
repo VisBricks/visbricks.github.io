@@ -1,0 +1,11 @@
+{
+  "slug": "tree-leaf-axis",
+  "starter": "tree-leaf-axis",
+  "completedCase": null,
+  "status": "starter-only",
+  "data": ["data/tree_nodes.csv", "data/default_chart_data.csv"],
+  "blocks": [
+    { "chartType": "Dendrogram" },
+    { "chartType": "GroupedBarChart" }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "shared-hierarchy",
+  "starter": "shared-hierarchy",
+  "completedCase": "sunburst-radial-dendrogram-shared-r",
+  "status": "complete",
+  "data": ["data/tree.csv"],
+  "blocks": [
+    {
+      "chartType": "Sunburst",
+      "frame": { "width": 640, "height": 640 },
+      "bindings": { "key": "node_id", "parent": "parent_id", "value": "weight" },
+      "labelsVisible": false
+    },
+    {
+      "chartType": "RadialDendrogram",
+      "frame": { "width": 640, "height": 640 },
+      "bindings": { "key": "node_id", "parent": "parent_id" },
+      "labelsVisible": false
+    }
+  ],
+  "composition": [{
+    "type": "concat",
+    "direction": "angular",
+    "sharedChannels": ["radius"],
+    "before": "Sunburst",
+    "after": "RadialDendrogram",
+    "sharedCenter": true,
+    "totalAngleSpan": 360,
+    "members": [
+      { "chartType": "Sunburst", "angleOffset": 0, "angleSpan": 180, "placement": "lower-half" },
+      { "chartType": "RadialDendrogram", "angleOffset": 180, "angleSpan": 180, "placement": "upper-half" }
+    ]
+  }],
+  "expectedRender": {
+    "width": 640,
+    "height": 640,
+    "hierarchyLevelsBelowRoot": 6,
+    "sharedHierarchyOuterRadius": 316,
+    "sunburstArcs": 54,
+    "dendrogramNodes": 55,
+    "dendrogramLinks": 54
+  },
+  "preview": {
+    "path": "preview.svg",
+    "source": "http://localhost:5173/editor/?case=sunburst-radial-dendrogram-shared-r",
+    "capturedOn": "2026-09-15",
+    "sha256": "de77012aef7484eabbc30c01498bd128122fb936af2f849ef782d8bc98e2803c"
+  }
+}

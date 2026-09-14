@@ -1,0 +1,36 @@
+{
+  "slug": "academic-scores",
+  "starter": "academic-scores",
+  "completedCase": "academic-scores-nested-concat",
+  "data": ["data/academic_scores_wide.csv"],
+  "blocks": [
+    {
+      "chartType": "Streamgraph",
+      "frame": { "width": 720, "height": 330 },
+      "bindings": {
+        "x": "academic_level",
+        "yFold": ["Literature", "Mathematics", "Biology", "Chemistry", "Physics", "Computer Science", "Politics", "History"]
+      }
+    },
+    {
+      "chartType": "Scatterplot",
+      "frame": { "width": 720, "height": 330 },
+      "bindings": {
+        "x": "academic_level",
+        "y": "university_size",
+        "color": "university_id",
+        "size": "total_awards"
+      }
+    },
+    {
+      "chartType": "PieChart",
+      "bindings": {
+        "thetaFold": ["Literature", "Mathematics", "Biology", "Chemistry", "Physics", "Computer Science", "Politics", "History"]
+      }
+    }
+  ],
+  "composition": [
+    { "type": "nested", "child": "PieChart", "parent": "Scatterplot", "target": "*", "radius": "total_awards" },
+    { "type": "concat", "direction": "vertical", "placement": "before", "sharedChannels": ["x"], "before": "Streamgraph", "after": "Scatterplot" }
+  ]
+}
