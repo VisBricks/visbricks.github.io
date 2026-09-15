@@ -149,7 +149,7 @@ export async function configure(context, ...args) {
     const viewport = canvasRef.value?.getBoundingClientRect();
     if (bounds && viewport && bounds.width > 0 && bounds.height > 0) {
       const padding = 56;
-      const zoom = clamp(Math.min((viewport.width - padding * 2) / bounds.width, (viewport.height - padding * 2) / bounds.height, 1), MIN_ZOOM, MAX_ZOOM);
+      const zoom = clamp(Math.min((viewport.width - padding * 2) / bounds.width, (viewport.height - padding * 2) / bounds.height), MIN_ZOOM, MAX_ZOOM);
       viewZoom.value = zoom;
       viewPan.value = {
         x: (viewport.width - bounds.width * zoom) / 2 - bounds.minX * zoom,

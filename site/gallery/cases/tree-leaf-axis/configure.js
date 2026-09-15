@@ -107,7 +107,7 @@ export async function configure(context, ...args) {
     const viewport = canvasRef.value?.getBoundingClientRect();
     const bounds = canvasNodes.value.reduce((current, node) => mergeBounds(current, boundsFromNodeFrame(node.x, node.y, node.width, node.height, node.scaleX, node.scaleY, node.rotation)), null);
     if (viewport && bounds) {
-      const zoom = clamp(Math.min((viewport.width - 80) / bounds.width, (viewport.height - 80) / bounds.height, 1), MIN_ZOOM, MAX_ZOOM);
+      const zoom = clamp(Math.min((viewport.width - 80) / bounds.width, (viewport.height - 80) / bounds.height), MIN_ZOOM, MAX_ZOOM);
       viewZoom.value = zoom;
       viewPan.value = { x: (viewport.width - bounds.width * zoom) / 2 - bounds.minX * zoom, y: (viewport.height - bounds.height * zoom) / 2 - bounds.minY * zoom };
     }

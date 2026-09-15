@@ -44,7 +44,7 @@ export async function configure(context, ...args) {
     const bounds = getSelectionScopeNodes().reduce((current, node) => mergeBounds(current, boundsFromNodeFrame(node.x, node.y, node.width, node.height, node.scaleX, node.scaleY, node.rotation)), null);
     const viewport = canvasRef.value?.getBoundingClientRect();
     if (bounds && viewport && bounds.width > 0 && bounds.height > 0) {
-      const zoom = clamp(Math.min((viewport.width - 112) / bounds.width, (viewport.height - 112) / bounds.height, 1), MIN_ZOOM, MAX_ZOOM);
+      const zoom = clamp(Math.min((viewport.width - 112) / bounds.width, (viewport.height - 112) / bounds.height), MIN_ZOOM, MAX_ZOOM);
       viewZoom.value = zoom;
       viewPan.value = { x: (viewport.width - bounds.width * zoom) / 2 - bounds.minX * zoom, y: (viewport.height - bounds.height * zoom) / 2 - bounds.minY * zoom };
     }

@@ -61,7 +61,7 @@
     "file": {
       "type": "PAIRED CSV",
       "name": "chord_polar_line_nodes.csv + chord_polar_line_links.csv",
-      "description": "Node observations and source\u2013target relationships stored as two related tables.",
+      "description": "Node observations and source–target relationships stored as two related tables.",
       "files": [
         "chord_polar_line_nodes.csv",
         "chord_polar_line_links.csv"
@@ -73,7 +73,7 @@
         "role": "Node key / facet"
       },
       {
-        "field": "source \u2192 target",
+        "field": "source → target",
         "role": "Chord links"
       },
       {
@@ -85,11 +85,38 @@
         "role": "Series / color"
       }
     ],
-    "composition": "Facet the circular bars by node, then concatenate them with the Chord on a shared angle."
+    "composition": "Facet the circular bars by node, then concatenate them with the Chord on a shared angle.",
+    "editorHelp": {
+      "introduction": "The Chord and Circular Stacked Bar are already bound. First split the bars by node; then drag the resulting group around the Chord.",
+      "steps": [
+        {
+          "title": "Split the bars by node",
+          "source": "Circular Stacked Bar on the canvas",
+          "target": "Facet → Polar → Theta dimension",
+          "action": "Click the Circular Stacked Bar, then click Facet in the canvas toolbar. In Facet dimensions, choose Polar, set Theta dimension to node_id, leave Radius dimension as None, and confirm.",
+          "result": "The bars become a polar group with one angular section per node."
+        },
+        {
+          "title": "Drag the group around the Chord",
+          "source": "The faceted Circular Stacked Bar group",
+          "target": "Ring-shaped drop zone just outside the Chord",
+          "action": "Press and hold the faceted group and drag it to the ring outside the Chord’s outer edge. Release when the ring highlights with Concat · share ANGLE.",
+          "result": "The Chord and faceted bars share one center and angular alignment, with the bars outside."
+        },
+        {
+          "title": "Enlarge the inner Chord",
+          "source": "The Chord’s radial resize handle",
+          "target": "The boundary shared with the surrounding bar group",
+          "action": "Select the inner Chord and drag its radial handle outward. You can also select the outer Facet and move its inner-radius handle to adjust the same boundary.",
+          "result": "The Chord uses more of the shared radius while the outer bar ring becomes narrower."
+        }
+      ]
+    }
   },
   "preview": {
     "path": "preview.svg",
-    "sha256": "8c6dab4131f3de299044aa545e2aaa9346139796f4b721412ff9165dea0352da",
-    "source": "https://visbricks.github.io/editor/?case=chord-circular-stacked-facet-concat"
+    "sha256": "b88e87b8b9cb836275f9bdd2eac8254641b34813274532adf9388fc4d5f738f4",
+    "source": "https://visbricks.github.io/editor/?case=chord-circular-stacked-facet-concat",
+    "capturedOn": "2026-09-15"
   }
 }

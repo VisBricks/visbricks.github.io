@@ -148,23 +148,23 @@
     "file": {
       "type": "MONTHLY HIERARCHY CSV",
       "name": "tree_nodes.csv",
-      "description": "180 rows: fifteen nodes observed over twelve months in 2025. node_id and parent_id define the tree; month and metric_1\u2013metric_5 supply each node\u2019s profiles. The tree uses one structural record per node while both nested charts keep the full monthly observations.",
+      "description": "180 rows: fifteen nodes observed over twelve months in 2025. node_id and parent_id define the tree; month and metric_1–metric_5 supply each node’s profiles. The tree uses one structural record per node while both nested charts keep the full monthly observations.",
       "files": [
         "tree_nodes.csv"
       ]
     },
     "bindings": [
       {
-        "field": "node_id \u2192 parent_id",
+        "field": "node_id → parent_id",
         "role": "Dendrogram node and parent identity"
       },
       {
         "field": "month",
-        "role": "Radial Stacked Bar angular categories \u00b7 Area Chart X"
+        "role": "Radial Stacked Bar angular categories · Area Chart X"
       },
       {
-        "field": "metric_1 \u2026 metric_5",
-        "role": "Fold to metric / metric_value \u00b7 radial stack series / radius"
+        "field": "metric_1 … metric_5",
+        "role": "Fold to metric / metric_value · radial stack series / radius"
       },
       {
         "field": "metric_1",
@@ -175,6 +175,39 @@
         "role": "Inherited node filter for both nested charts"
       }
     ],
-    "composition": "Enter the Dendrogram node level and nest the Radial Stacked Bar (Sector) on every node, offset to the left. Nest the Area Chart on the same nodes, offset to the right. Hide the original node dots so each pair of charts replaces its node. The taller layout creates a nearly square composition. Each child inherits only its node_id, preserving all twelve months for that node."
+    "composition": "Enter the Dendrogram node level and nest the Radial Stacked Bar (Sector) on every node, offset to the left. Nest the Area Chart on the same nodes, offset to the right. Hide the original node dots so each pair of charts replaces its node. The taller layout creates a nearly square composition. Each child inherits only its node_id, preserving all twelve months for that node.",
+    "editorHelp": {
+      "introduction": "The horizontal Dendrogram, sector Radial Stacked Bar, and Area Chart are already on the canvas. Nest the two profile blocks one at a time.",
+      "steps": [
+        {
+          "title": "Drag radial profiles onto the tree nodes",
+          "source": "Radial Stacked Bar (Sector) on the canvas",
+          "target": "Dendrogram center → a node dot",
+          "action": "Hold the Radial Stacked Bar and drag through the Dendrogram’s central Enter circle. Keep holding, move to a node dot, and release when Nested appears.",
+          "result": "Radial profiles repeat on all fifteen nodes, including internal nodes and leaves."
+        },
+        {
+          "title": "Place radial profiles on the left",
+          "source": "Nested radial profiles’ configuration",
+          "target": "Left side of each Dendrogram node",
+          "action": "In the nested configuration, set Offset X to -78 and Offset Y to 0. Keep Show parent element enabled until the Area Chart has also been nested.",
+          "result": "The original node dots stay available as targets for the second drag."
+        },
+        {
+          "title": "Drag areas onto the same nodes",
+          "source": "Area Chart on the canvas",
+          "target": "Dendrogram center → an original node dot",
+          "action": "Hold the Area Chart, pass through Enter if the node level is closed, and move to an original Dendrogram node dot. Release when Nested appears; aim at the tree node rather than a radial sector.",
+          "result": "Each node now has both monthly profiles, inheriting node_id so all twelve months are preserved."
+        },
+        {
+          "title": "Place areas on the right",
+          "source": "Nested Area Charts’ configuration",
+          "target": "Right side of each Dendrogram node",
+          "action": "Set Offset X to 80 and Offset Y to 0 for the Area Charts. Adjust the child sizes to keep the two profiles separate, then turn off Show parent element to hide the original dots.",
+          "result": "Each tree node is represented by a radial profile on the left and an area profile on the right."
+        }
+      ]
+    }
   }
 }

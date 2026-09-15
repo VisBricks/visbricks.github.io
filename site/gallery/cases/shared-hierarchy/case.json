@@ -80,7 +80,7 @@
   "gallery": {
     "number": "02",
     "title": "Sunburst & Radial Dendrogram",
-    "description": "Two views of the same 55-node organization share one polar plane: a Radial Dendrogram above and a weighted Sunburst below, each spanning 180\u00b0.",
+    "description": "Two views of the same 55-node organization share one polar plane: a Radial Dendrogram above and a weighted Sunburst below, each spanning 180°.",
     "tags": [
       "Hierarchy",
       "Polar",
@@ -96,7 +96,7 @@
     "file": {
       "type": "HIERARCHY CSV",
       "name": "tree.csv",
-      "description": "One row per organization node. node_id identifies the node, parent_id identifies its parent (empty for the root), and weight determines Sunburst sector size. The 55 nodes span six levels below the root; label and metric_1\u2013metric_5 remain available but are not bound.",
+      "description": "One row per organization node. node_id identifies the node, parent_id identifies its parent (empty for the root), and weight determines Sunburst sector size. The 55 nodes span six levels below the root; label and metric_1–metric_5 remain available but are not bound.",
       "files": [
         "tree.csv"
       ]
@@ -104,7 +104,7 @@
     "bindings": [
       {
         "field": "node_id",
-        "role": "Sunburst node ID \u00b7 Radial Dendrogram node ID"
+        "role": "Sunburst node ID · Radial Dendrogram node ID"
       },
       {
         "field": "parent_id",
@@ -115,6 +115,25 @@
         "role": "Sunburst sector size"
       }
     ],
-    "composition": "Start with the two independently bound blocks. Apply angular Concat with shared Radius (R): both views use one center and the same hierarchy-depth scale, with the Radial Dendrogram on the upper 180\u00b0 and the Sunburst on the lower 180\u00b0. Labels are hidden to keep the structure readable; node details remain in tooltips."
+    "composition": "Start with the two independently bound blocks. Apply angular Concat with shared Radius (R): both views use one center and the same hierarchy-depth scale, with the Radial Dendrogram on the upper 180° and the Sunburst on the lower 180°. Labels are hidden to keep the structure readable; node details remain in tooltips.",
+    "editorHelp": {
+      "introduction": "The Sunburst and Radial Dendrogram are already bound to the same hierarchy. Join them at an angular edge to make two halves of one circle.",
+      "steps": [
+        {
+          "title": "Drag the hierarchy to the angular edge",
+          "source": "Radial Dendrogram on the canvas",
+          "target": "Sunburst’s outer angular Concat sector just below the right-hand seam",
+          "action": "Hold the Radial Dendrogram and move the pointer to the small sector outside the Sunburst, just below the right-hand seam where its full-circle sweep ends. This sector sits beyond the ring-shaped drop zone. Release only when the highlighted sector reads Concat · share RADIUS.",
+          "result": "Angular Concat shares hierarchy depth: the Sunburst occupies the lower half and the Radial Dendrogram the upper half."
+        },
+        {
+          "title": "Check the shared circle",
+          "source": "The two joined hierarchy views",
+          "target": "One center, with a 180° half for each view",
+          "action": "Check that the trees meet at one center. If you made concentric rings, use Undo and repeat the drag onto the angular sector labeled Concat · share RADIUS; the ring-shaped zone shares ANGLE instead.",
+          "result": "The finished layout has branches above and colored Sunburst arcs below."
+        }
+      ]
+    }
   }
 }

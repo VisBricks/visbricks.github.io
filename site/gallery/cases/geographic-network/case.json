@@ -201,7 +201,7 @@
     "file": {
       "type": "CSV + GRAPH CSV PAIR + GEOJSON",
       "name": "case2.csv + geo graph + NYC ZIP geometry",
-      "description": "case2.csv contains sighting observations keyed by incident_zip. The geo dataset pairs 120 monthly observations for ten nodes with thirteen source\u2013target edges. Both maps join the same case-owned NYC ZIP GeoJSON; 177 geometry features match ZIPs in case2.csv; unmatched ZIP values are omitted.",
+      "description": "case2.csv contains sighting observations keyed by incident_zip. The geo dataset pairs 120 monthly observations for ten nodes with thirteen source–target edges. Both maps join the same case-owned NYC ZIP GeoJSON; 177 geometry features match ZIPs in case2.csv; unmatched ZIP values are omitted.",
       "files": [
         "case2.csv",
         "case2_graph_nodes.csv",
@@ -212,34 +212,67 @@
     "bindings": [
       {
         "field": "incident_zip",
-        "role": "Polygon CSV \u2192 GeoJSON ZIP ID join"
+        "role": "Polygon CSV → GeoJSON ZIP ID join"
       },
       {
         "field": "sighting_count",
-        "role": "Polygon color \u00b7 sum per ZIP geometry"
+        "role": "Polygon color · sum per ZIP geometry"
       },
       {
         "field": "point",
-        "role": "geo Scatterplot node \u2192 GeoJSON ZIP ID join"
+        "role": "geo Scatterplot node → GeoJSON ZIP ID join"
       },
       {
-        "field": "id \u00b7 source \u00b7 target \u00b7 value",
-        "role": "Graph node identity \u00b7 link endpoints \u00b7 link weight"
+        "field": "id · source · target · value",
+        "role": "Graph node identity · link endpoints · link weight"
       },
       {
         "field": "month",
         "role": "Nested Stacked Bar X (12 months)"
       },
       {
-        "field": "pedestrian_trips \u00b7 bicycle_trips \u00b7 transit_rides \u00b7 vehicle_trips \u00b7 delivery_trips",
-        "role": "Stacked Bar Y fold \u00b7 five travel-mode series"
+        "field": "pedestrian_trips · bicycle_trips · transit_rides · vehicle_trips · delivery_trips",
+        "role": "Stacked Bar Y fold · five travel-mode series"
       },
       {
         "field": "point",
         "role": "Inherited node filter for each nested chart"
       }
     ],
-    "composition": "Start with the independently bound Polygon, geographic Scatterplot, and Stacked Bar. First position nodes by joining geo.point to the ZIP geometry. Drag Graph Link (Geographic) directly onto the Scatterplot to add links at those node positions. Layer the Scatterplot over the Polygon, then nest the Stacked Bar into the Scatterplot points. Each nested chart inherits its node\u2019s point filter and shows that node\u2019s twelve monthly observations. Enable its message frame and offset it from the point: the arrow stays anchored to the original node. Polygon color sums sighting_count for each matched ZIP geometry."
+    "composition": "Start with the independently bound Polygon, geographic Scatterplot, and Stacked Bar. First position nodes by joining geo.point to the ZIP geometry. Drag Graph Link (Geographic) directly onto the Scatterplot to add links at those node positions. Layer the Scatterplot over the Polygon, then nest the Stacked Bar into the Scatterplot points. Each nested chart inherits its node’s point filter and shows that node’s twelve monthly observations. Enable its message frame and offset it from the point: the arrow stays anchored to the original node. Polygon color sums sighting_count for each matched ZIP geometry.",
+    "editorHelp": {
+      "introduction": "The Polygon map, geographic Scatterplot, and Stacked Bar are prepared on the canvas. Add Graph Link from the chart catalog first.",
+      "steps": [
+        {
+          "title": "Add the network links",
+          "source": "Graph Link (Geographic) in the top Chart Blocks catalog",
+          "target": "Inside the geographic Scatterplot map",
+          "action": "Choose Geographic in the Coordinate filter and open Geographic line in the top Chart Blocks catalog. Drag the Graph Link (Geographic) tile directly onto the Scatterplot map, then release inside the map.",
+          "result": "Links connect the ten existing Scatterplot nodes using the prepared graph data."
+        },
+        {
+          "title": "Layer the maps",
+          "source": "Geographic Scatterplot map on the canvas",
+          "target": "Inside the Polygon map",
+          "action": "Drag the Scatterplot map onto the interior of the Polygon map. Release when the destination highlights with Layer.",
+          "result": "ZIP polygons, Scatterplot nodes, and network links share the same map."
+        },
+        {
+          "title": "Nest bars at the map nodes",
+          "source": "Stacked Bar on the canvas",
+          "target": "Layered map center → a Scatterplot node",
+          "action": "Hold the Stacked Bar and drag through the map’s central Enter circle. Keep holding, move onto a visible Scatterplot node, and release when Nested highlights that point.",
+          "result": "Each node gets a Stacked Bar showing its twelve months and five travel modes, filtered by point."
+        },
+        {
+          "title": "Move the profiles away from the map",
+          "source": "A nested Stacked Bar’s frame settings",
+          "target": "An offset beside its original map node",
+          "action": "Open the nested chart’s configuration, enable Connect frame to parent, and adjust Offset X and Offset Y to move its frame clear of neighboring charts. Repeat for overlapping profiles.",
+          "result": "Each offset profile keeps a connecting tail anchored to its original map node."
+        }
+      ]
+    }
   },
   "starterConfiguration": {
     "independentBlocks": [

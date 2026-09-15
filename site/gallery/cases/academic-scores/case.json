@@ -79,7 +79,7 @@
   "gallery": {
     "number": "01",
     "title": "Academic Scores & University Size",
-    "description": "A Streamgraph summarizes eight academic award fields across academic level. Below it, a Scatterplot maps academic level against university size and uses nested Pie Charts for each university\u2019s award profile.",
+    "description": "A Streamgraph summarizes eight academic award fields across academic level. Below it, a Scatterplot maps academic level against university size and uses nested Pie Charts for each university’s award profile.",
     "tags": [
       "Streamgraph",
       "Nested",
@@ -105,15 +105,15 @@
     "bindings": [
       {
         "field": "academic_level",
-        "role": "Streamgraph X \u00b7 Scatterplot X"
+        "role": "Streamgraph X · Scatterplot X"
       },
       {
         "field": "university_size",
         "role": "Scatterplot Y"
       },
       {
-        "field": "Literature \u2026 History",
-        "role": "Streamgraph Y fold \u00b7 Pie theta fold"
+        "field": "Literature … History",
+        "role": "Streamgraph Y fold · Pie theta fold"
       },
       {
         "field": "university_id",
@@ -124,7 +124,26 @@
         "role": "Scatterplot size"
       }
     ],
-    "composition": "Nest the Pie Chart into each Scatterplot point, then concatenate the Streamgraph above the Scatterplot on their shared academic_level X axis."
+    "composition": "Nest the Pie Chart into each Scatterplot point, then concatenate the Streamgraph above the Scatterplot on their shared academic_level X axis.",
+    "editorHelp": {
+      "introduction": "The Streamgraph, Scatterplot, and Pie Chart are already on the canvas with data bound. Start with the small Pie Chart.",
+      "steps": [
+        {
+          "title": "Drag the Pie into the Scatterplot",
+          "source": "Pie Chart on the canvas",
+          "target": "Scatterplot center → a scatter point",
+          "action": "Press and hold the Pie Chart. Drag it through the circle labeled Enter in the middle of the Scatterplot. Keep holding, move onto a scatter point, and release when Nested appears.",
+          "result": "Pie Charts are repeated across the Scatterplot points, showing each university’s subject values."
+        },
+        {
+          "title": "Place the Streamgraph above",
+          "source": "Streamgraph on the canvas",
+          "target": "Drop strip just above the Scatterplot",
+          "action": "Drag the Streamgraph to the strip outside the Scatterplot’s top edge. Keep the pointer away from the central Enter circle. Release when the strip highlights with Concat · share X.",
+          "result": "The Streamgraph sits above the Scatterplot and shares its academic_level X axis."
+        }
+      ]
+    }
   },
   "preview": {
     "path": "preview.svg",

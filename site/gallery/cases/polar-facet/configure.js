@@ -1,6 +1,6 @@
 /** Case-owned bindings, frames, and replay of real editor composition operations. */
 export async function configure(context, ...args) {
-  const { MAX_ZOOM, MIN_ZOOM, canvasNodes, canvasRef, clamp, concatNodesAreCompatible, createCanvasItem, createFacetFromFields, executeComposition, findCanvasNode, getCanvasNodeListBounds, getDataset, getPolarOccupiedGeometry, getSelectionScopeNodes, implementedTemplateDefinitions, nodeLocalToSelectionScopePoint, registerChartRelationship, renderChartNode, setActiveDataset, setSelection, viewPan, viewZoom } = context;
+  const { MAX_ZOOM, MIN_ZOOM, canvasNodes, canvasRef, clamp, commitCompositionDrop, compositionDropZones, concatNodesAreCompatible, createCanvasItem, createFacetFromFields, findCanvasNode, getCanvasNodeListBounds, getDataset, getSelectionScopeNodes, implementedTemplateDefinitions, registerChartRelationship, renderChartNode, renderSharedCoordinateComposition, setActiveDataset, setSelection, viewPan, viewZoom } = context;
   async function loadChordCircularStackedFacetCase(datasetId, compose = true) {
     const dataset = getDataset(datasetId);
     const chordCandidate = implementedTemplateDefinitions.find((candidate) => candidate.chartType === "Chord");
@@ -93,30 +93,28 @@ export async function configure(context, ...args) {
       if (!facetRoot || !concatNodesAreCompatible([chord, facetRoot], "radial", "angle")) {
         return false;
       }
-      setSelection([chord.id, facetRoot.id]);
-      if (!executeComposition("concat", false, ["angle"], "radial"))
+      setSelection([facetRoot.id]);
+      const radialDrop = compositionDropZones(facetRoot.id).find((zone) => zone.targetNodeId === chord.id
+        && zone.type === "concat"
+        && zone.direction === "radial"
+        && zone.concatPosition === "after"
+        && zone.compatible);
+      if (!radialDrop || !commitCompositionDrop(radialDrop, facetRoot.id))
         return false;
-      const facetGeometry = getPolarOccupiedGeometry(facetRoot);
-      const chordGeometry = getPolarOccupiedGeometry(chord);
-      if (!facetGeometry || !chordGeometry)
+      const concat = chord.compositionSpec?.type === "concat"
+        ? chord.compositionSpec
+        : facetRoot.compositionSpec?.type === "concat" ? facetRoot.compositionSpec : null;
+      if (!concat)
         return false;
-      const sharedCenter = nodeLocalToSelectionScopePoint(facetRoot, facetGeometry.origin);
-      const facetScale = Math.min(Math.abs(facetRoot.scaleX), Math.abs(facetRoot.scaleY));
-      const facetOuterRadius = facetGeometry.outerRadius * facetScale;
-      const chordScale = facetOuterRadius * 0.46 / Math.max(chordGeometry.outerRadius, 1);
-      const chordLocalMinX = chord.kind === "leaf" ? chord.contentMinX : 0;
-      const chordLocalMinY = chord.kind === "leaf" ? chord.contentMinY : 0;
-      chord.scaleX = chordScale;
-      chord.scaleY = chordScale;
-      chord.x = sharedCenter.x - (chordGeometry.origin.x - chordLocalMinX) * chordScale;
-      chord.y = sharedCenter.y - (chordGeometry.origin.y - chordLocalMinY) * chordScale;
+      concat.polarRadialBoundaries = [0, 0.72, 1];
+      renderSharedCoordinateComposition(chord);
     }
     setSelection([]);
     const bounds = getCanvasNodeListBounds(getSelectionScopeNodes());
     const viewport = canvasRef.value?.getBoundingClientRect();
     if (bounds && viewport && bounds.width > 0 && bounds.height > 0) {
       const padding = 56;
-      const zoom = clamp(Math.min((viewport.width - padding * 2) / bounds.width, (viewport.height - padding * 2) / bounds.height, 1), MIN_ZOOM, MAX_ZOOM);
+      const zoom = clamp(Math.min((viewport.width - padding * 2) / bounds.width, (viewport.height - padding * 2) / bounds.height), MIN_ZOOM, MAX_ZOOM);
       viewZoom.value = zoom;
       viewPan.value = {
         x: (viewport.width - bounds.width * zoom) / 2 - bounds.minX * zoom,

@@ -157,7 +157,7 @@
   "gallery": {
     "number": "05",
     "title": "Matrix, Pie Network & Marginals",
-    "description": "A graph-derived 20 \u00d7 20 heatmap carries a weighted Force Network whose 72 nodes are five-slice pies. Two marginal Stacked Bars summarize the same five components by matrix column and row.",
+    "description": "A graph-derived 20 × 20 heatmap carries a weighted Force Network whose 72 nodes are five-slice pies. Two marginal Stacked Bars summarize the same five components by matrix column and row.",
     "tags": [
       "Matrix",
       "Force Network",
@@ -165,7 +165,7 @@
     ],
     "blocks": [
       "Matrix Diagram + Force Network",
-      "Stacked Bar \u00d7 2"
+      "Stacked Bar × 2"
     ],
     "coordinateSystems": [
       "Cartesian",
@@ -185,30 +185,49 @@
     "bindings": [
       {
         "field": "column_group",
-        "role": "Matrix X \u00b7 top marginal X"
+        "role": "Matrix X · top marginal X"
       },
       {
         "field": "row_group",
-        "role": "Matrix Y \u00b7 right marginal shared Y"
+        "role": "Matrix Y · right marginal shared Y"
       },
       {
         "field": "heat_value",
-        "role": "Matrix cell color \u00b7 marginal aggregate"
+        "role": "Matrix cell color · marginal aggregate"
       },
       {
-        "field": "id \u00b7 source \u00b7 target \u00b7 weight",
+        "field": "id · source · target · weight",
         "role": "Force nodes, links, link width, and Pie radius"
       },
       {
-        "field": "layout_x \u00b7 layout_y",
+        "field": "layout_x · layout_y",
         "role": "Stored Force node positions"
       },
       {
-        "field": "channel_a \u2026 channel_e",
-        "role": "Node Pie slices \u00b7 Stacked Bar series"
+        "field": "channel_a … channel_e",
+        "role": "Node Pie slices · Stacked Bar series"
       }
     ],
-    "composition": "Overlay the weighted Pie-node Force Network on the Matrix, concatenate one Stacked Bar above on shared X, then concatenate the axis-swapped Stacked Bar on the right on shared Y."
+    "composition": "Overlay the weighted Pie-node Force Network on the Matrix, concatenate one Stacked Bar above on shared X, then concatenate the axis-swapped Stacked Bar on the right on shared Y.",
+    "editorHelp": {
+      "introduction": "The large Matrix already contains the weighted Pie-node network. Two separate Stacked Bars are prepared: a wide top marginal and a tall right marginal.",
+      "steps": [
+        {
+          "title": "Attach the top marginal",
+          "source": "Wide Stacked Bar above the Matrix",
+          "target": "Drop strip just outside the Matrix’s top edge",
+          "action": "Hold the wide Stacked Bar and drag it toward the top edge of the Matrix. Place the pointer in the outer top strip and release when Concat · share X highlights.",
+          "result": "The top bar aligns with the Matrix columns through column_group."
+        },
+        {
+          "title": "Attach the right marginal",
+          "source": "Tall Stacked Bar to the right of the Matrix",
+          "target": "Drop strip just outside the Matrix’s right edge",
+          "action": "Drag the tall Stacked Bar toward the Matrix’s right edge, keeping the pointer level with the Matrix body and away from the corner. Release when Concat · share Y highlights.",
+          "result": "The right bar aligns with the Matrix rows through row_group; the Pie network remains inside the Matrix."
+        }
+      ]
+    }
   },
   "preview": {
     "path": "preview.svg",
