@@ -2,7 +2,6 @@
   "slug": "matrix-network",
   "starter": "matrix-network",
   "completedCase": "matrix-force-heatmap-marginal-bars",
-  "sourceBranch": "master",
   "data": [
     "data/matrix_force_heatmap.csv",
     "data/matrix_force_nodes.csv",
@@ -12,7 +11,12 @@
     {
       "id": "matrix-network",
       "chartType": "MatrixDiagram",
-      "frame": { "x": 350, "y": 300, "width": 920, "height": 920 },
+      "frame": {
+        "x": 350,
+        "y": 300,
+        "width": 920,
+        "height": 920
+      },
       "bindings": {
         "x": "column_group",
         "y": "row_group",
@@ -24,51 +28,191 @@
         "size": "weight",
         "series": "dominant_component"
       },
-      "cellStyle": { "opacity": 0.94, "colorMapping": "globalPalette.gradient", "domain": [0, 25] },
+      "cellStyle": {
+        "opacity": 0.94,
+        "colorMapping": "globalPalette.gradient",
+        "domain": [
+          0,
+          25
+        ]
+      },
       "nodeStyle": {
         "layoutXField": "layout_x",
         "layoutYField": "layout_y",
         "layoutNormalized": true,
         "shape": "pie",
-        "pieFields": ["channel_a", "channel_b", "channel_c", "channel_d", "channel_e"],
+        "pieFields": [
+          "channel_a",
+          "channel_b",
+          "channel_c",
+          "channel_d",
+          "channel_e"
+        ],
         "radiusField": "weight",
-        "radiusRange": [8, 24],
+        "radiusRange": [
+          8,
+          24
+        ],
         "labelsVisible": false,
         "colors": "globalPalette.categorical[0..4]"
       },
       "linkStyle": {
         "color": "#ffffff",
-        "internal": { "opacity": 0.12, "width": 2 },
-        "cross": { "opacity": 0.22, "width": 3 },
-        "radial": { "opacity": 0.62, "width": 4.8 }
+        "internal": {
+          "opacity": 0.12,
+          "width": 2
+        },
+        "cross": {
+          "opacity": 0.22,
+          "width": 3
+        },
+        "radial": {
+          "opacity": 0.62,
+          "width": 4.8
+        }
       }
     },
     {
       "id": "top-marginal",
       "chartType": "StackedBarChart",
-      "frame": { "x": 350, "y": 40, "width": 920, "height": 220 },
+      "frame": {
+        "x": 350,
+        "y": 40,
+        "width": 920,
+        "height": 220
+      },
       "bindings": {
         "x": "column_group",
         "y": "heat_value",
-        "yFold": ["channel_a", "channel_b", "channel_c", "channel_d", "channel_e"]
+        "yFold": [
+          "channel_a",
+          "channel_b",
+          "channel_c",
+          "channel_d",
+          "channel_e"
+        ]
       }
     },
     {
       "id": "right-marginal",
       "chartType": "StackedBarChart",
-      "frame": { "x": 1310, "y": 300, "width": 300, "height": 920 },
+      "frame": {
+        "x": 1310,
+        "y": 300,
+        "width": 300,
+        "height": 920
+      },
       "axisSwapped": true,
       "bindings": {
         "x": "row_group",
         "y": "heat_value",
-        "yFold": ["channel_a", "channel_b", "channel_c", "channel_d", "channel_e"]
+        "yFold": [
+          "channel_a",
+          "channel_b",
+          "channel_c",
+          "channel_d",
+          "channel_e"
+        ]
       }
     }
   ],
   "composition": [
-    { "type": "layer", "members": ["Matrix heatmap", "weighted Pie-node Force Network"] },
-    { "type": "concat", "direction": "vertical", "placement": "before", "sharedChannels": ["x"], "before": "top-marginal", "after": "matrix-network" },
-    { "type": "concat", "direction": "horizontal", "placement": "after", "sharedChannels": ["y"], "before": "matrix-network", "after": "right-marginal" }
+    {
+      "type": "layer",
+      "members": [
+        "Matrix heatmap",
+        "weighted Pie-node Force Network"
+      ]
+    },
+    {
+      "type": "concat",
+      "direction": "vertical",
+      "placement": "before",
+      "sharedChannels": [
+        "x"
+      ],
+      "before": "top-marginal",
+      "after": "matrix-network"
+    },
+    {
+      "type": "concat",
+      "direction": "horizontal",
+      "placement": "after",
+      "sharedChannels": [
+        "y"
+      ],
+      "before": "matrix-network",
+      "after": "right-marginal"
+    }
   ],
-  "expectedRender": { "cells": 400, "nodes": 72, "pieSlices": 360, "links": 163, "marginalBarSegments": 200 }
+  "expectedRender": {
+    "cells": 400,
+    "nodes": 72,
+    "pieSlices": 360,
+    "links": 163,
+    "marginalBarSegments": 200
+  },
+  "configuration": "configure.js",
+  "status": "complete",
+  "gallery": {
+    "number": "05",
+    "title": "Matrix, Pie Network & Marginals",
+    "description": "A graph-derived 20 \u00d7 20 heatmap carries a weighted Force Network whose 72 nodes are five-slice pies. Two marginal Stacked Bars summarize the same five components by matrix column and row.",
+    "tags": [
+      "Matrix",
+      "Force Network",
+      "Concat"
+    ],
+    "blocks": [
+      "Matrix Diagram + Force Network",
+      "Stacked Bar \u00d7 2"
+    ],
+    "coordinateSystems": [
+      "Cartesian",
+      "CoordinateFree",
+      "Polar"
+    ],
+    "file": {
+      "type": "TABLE CSV + GRAPH CSV PAIR",
+      "name": "matrix_force_heatmap.csv + matrix_force_nodes.csv + matrix_force_edges.csv",
+      "description": "A 400-cell heatmap table paired with 72 positioned graph nodes and 163 weighted edges. All files are stored together in this Gallery case.",
+      "files": [
+        "matrix_force_heatmap.csv",
+        "matrix_force_nodes.csv",
+        "matrix_force_edges.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "column_group",
+        "role": "Matrix X \u00b7 top marginal X"
+      },
+      {
+        "field": "row_group",
+        "role": "Matrix Y \u00b7 right marginal shared Y"
+      },
+      {
+        "field": "heat_value",
+        "role": "Matrix cell color \u00b7 marginal aggregate"
+      },
+      {
+        "field": "id \u00b7 source \u00b7 target \u00b7 weight",
+        "role": "Force nodes, links, link width, and Pie radius"
+      },
+      {
+        "field": "layout_x \u00b7 layout_y",
+        "role": "Stored Force node positions"
+      },
+      {
+        "field": "channel_a \u2026 channel_e",
+        "role": "Node Pie slices \u00b7 Stacked Bar series"
+      }
+    ],
+    "composition": "Overlay the weighted Pie-node Force Network on the Matrix, concatenate one Stacked Bar above on shared X, then concatenate the axis-swapped Stacked Bar on the right on shared Y."
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "7822a86caf45b0c936b7666dd28879bde1897ba40a597f2fe5f8d1c6ad26afe8",
+    "source": "https://visbricks.github.io/editor/?case=matrix-force-heatmap-marginal-bars"
+  }
 }

@@ -1,0 +1,75 @@
+{
+  "Sunburst": {
+    "chartType": "Sunburst",
+    "encodings": {
+      "key": {
+        "field": "node_id",
+        "type": "nominal"
+      },
+      "parent": {
+        "field": "parent_id",
+        "type": "nominal"
+      },
+      "value": {
+        "field": "weight",
+        "type": "quantitative"
+      }
+    },
+    "axes": {
+      "theta": {
+        "visible": false,
+        "labelsVisible": false
+      },
+      "radius": {
+        "visible": false,
+        "labelsVisible": false
+      }
+    },
+    "markGroups": [
+      {
+        "role": "node",
+        "memberKeys": [],
+        "allowOverrides": true,
+        "sharedConfig": {
+          "nodeLabelsVisible": false,
+          "leafLabelsVisible": false
+        }
+      }
+    ]
+  },
+  "RadialDendrogram": {
+    "chartType": "RadialDendrogram",
+    "encodings": {
+      "key": {
+        "field": "node_id",
+        "type": "nominal"
+      },
+      "parent": {
+        "field": "parent_id",
+        "type": "nominal"
+      }
+    },
+    "axes": {
+      "theta": {
+        "visible": false,
+        "labelsVisible": false
+      },
+      "radius": {
+        "visible": false,
+        "labelsVisible": false
+      }
+    },
+    "markGroups": [
+      {
+        "role": "node",
+        "memberKeys": [],
+        "allowOverrides": true,
+        "sharedConfig": {
+          "nodeLabelsVisible": false,
+          "leafLabelsVisible": false,
+          "size": 4
+        }
+      }
+    ]
+  }
+}

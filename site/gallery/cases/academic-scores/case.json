@@ -2,19 +2,36 @@
   "slug": "academic-scores",
   "starter": "academic-scores",
   "completedCase": "academic-scores-nested-concat",
-  "data": ["data/academic_scores_wide.csv"],
+  "data": [
+    "data/academic_scores_wide.csv"
+  ],
   "blocks": [
     {
       "chartType": "Streamgraph",
-      "frame": { "width": 720, "height": 330 },
+      "frame": {
+        "width": 720,
+        "height": 330
+      },
       "bindings": {
         "x": "academic_level",
-        "yFold": ["Literature", "Mathematics", "Biology", "Chemistry", "Physics", "Computer Science", "Politics", "History"]
+        "yFold": [
+          "Literature",
+          "Mathematics",
+          "Biology",
+          "Chemistry",
+          "Physics",
+          "Computer Science",
+          "Politics",
+          "History"
+        ]
       }
     },
     {
       "chartType": "Scatterplot",
-      "frame": { "width": 720, "height": 330 },
+      "frame": {
+        "width": 720,
+        "height": 330
+      },
       "bindings": {
         "x": "academic_level",
         "y": "university_size",
@@ -25,12 +42,94 @@
     {
       "chartType": "PieChart",
       "bindings": {
-        "thetaFold": ["Literature", "Mathematics", "Biology", "Chemistry", "Physics", "Computer Science", "Politics", "History"]
+        "thetaFold": [
+          "Literature",
+          "Mathematics",
+          "Biology",
+          "Chemistry",
+          "Physics",
+          "Computer Science",
+          "Politics",
+          "History"
+        ]
       }
     }
   ],
   "composition": [
-    { "type": "nested", "child": "PieChart", "parent": "Scatterplot", "target": "*", "radius": "total_awards" },
-    { "type": "concat", "direction": "vertical", "placement": "before", "sharedChannels": ["x"], "before": "Streamgraph", "after": "Scatterplot" }
-  ]
+    {
+      "type": "nested",
+      "child": "PieChart",
+      "parent": "Scatterplot",
+      "target": "*",
+      "radius": "total_awards"
+    },
+    {
+      "type": "concat",
+      "direction": "vertical",
+      "placement": "before",
+      "sharedChannels": [
+        "x"
+      ],
+      "before": "Streamgraph",
+      "after": "Scatterplot"
+    }
+  ],
+  "configuration": "configure.js",
+  "status": "complete",
+  "gallery": {
+    "number": "01",
+    "title": "Academic Scores & University Size",
+    "description": "A Streamgraph summarizes eight academic award fields across academic level. Below it, a Scatterplot maps academic level against university size and uses nested Pie Charts for each university\u2019s award profile.",
+    "tags": [
+      "Streamgraph",
+      "Nested",
+      "Concat"
+    ],
+    "blocks": [
+      "Streamgraph",
+      "Scatterplot",
+      "Pie Chart"
+    ],
+    "coordinateSystems": [
+      "Cartesian",
+      "Polar"
+    ],
+    "file": {
+      "type": "WIDE CSV",
+      "name": "academic_scores_wide.csv",
+      "description": "One row per university, with academic level, university size, and eight separate academic award columns.",
+      "files": [
+        "academic_scores_wide.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "academic_level",
+        "role": "Streamgraph X \u00b7 Scatterplot X"
+      },
+      {
+        "field": "university_size",
+        "role": "Scatterplot Y"
+      },
+      {
+        "field": "Literature \u2026 History",
+        "role": "Streamgraph Y fold \u00b7 Pie theta fold"
+      },
+      {
+        "field": "university_id",
+        "role": "Scatterplot color"
+      },
+      {
+        "field": "total_awards",
+        "role": "Scatterplot size"
+      }
+    ],
+    "composition": "Nest the Pie Chart into each Scatterplot point, then concatenate the Streamgraph above the Scatterplot on their shared academic_level X axis."
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "f2a7f5f145d481c6e9ffae3cf3990af4b4bdd4f6daf7dfdd1c83d18769bcbce6",
+    "source": "https://visbricks.github.io/editor/?case=academic-scores-nested-concat",
+    "capturedOn": "2026-09-15"
+  }
 }

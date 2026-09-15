@@ -1,0 +1,121 @@
+id,point,label,station_type,month,pedestrian_trips,bicycle_trips,transit_rides,vehicle_trips,delivery_trips
+10307,10307,Tottenville,Residential,1,187,36,223,382,91
+10307,10307,Tottenville,Residential,2,174,42,237,405,88
+10307,10307,Tottenville,Residential,3,209,58,243,396,95
+10307,10307,Tottenville,Residential,4,232,69,269,404,84
+10307,10307,Tottenville,Residential,5,262,87,250,382,85
+10307,10307,Tottenville,Residential,6,247,101,227,432,95
+10307,10307,Tottenville,Residential,7,268,105,214,472,87
+10307,10307,Tottenville,Residential,8,264,88,212,409,95
+10307,10307,Tottenville,Residential,9,232,81,266,376,102
+10307,10307,Tottenville,Residential,10,225,61,256,411,95
+10307,10307,Tottenville,Residential,11,214,44,242,365,119
+10307,10307,Tottenville,Residential,12,182,33,215,417,128
+11231,11231,Carroll Gardens,Mixed Use,1,427,84,535,282,162
+11231,11231,Carroll Gardens,Mixed Use,2,474,99,549,294,156
+11231,11231,Carroll Gardens,Mixed Use,3,533,131,657,309,154
+11231,11231,Carroll Gardens,Mixed Use,4,547,167,632,341,147
+11231,11231,Carroll Gardens,Mixed Use,5,587,200,666,329,168
+11231,11231,Carroll Gardens,Mixed Use,6,634,223,643,316,155
+11231,11231,Carroll Gardens,Mixed Use,7,621,253,567,351,164
+11231,11231,Carroll Gardens,Mixed Use,8,637,214,598,340,164
+11231,11231,Carroll Gardens,Mixed Use,9,608,183,654,325,174
+11231,11231,Carroll Gardens,Mixed Use,10,575,161,667,323,181
+11231,11231,Carroll Gardens,Mixed Use,11,481,109,681,325,210
+11231,11231,Carroll Gardens,Mixed Use,12,452,88,582,322,228
+11224,11224,Coney Island,Waterfront,1,448,85,517,294,117
+11224,11224,Coney Island,Waterfront,2,491,90,530,304,113
+11224,11224,Coney Island,Waterfront,3,524,126,577,314,118
+11224,11224,Coney Island,Waterfront,4,546,155,522,332,120
+11224,11224,Coney Island,Waterfront,5,611,210,533,330,122
+11224,11224,Coney Island,Waterfront,6,816,295,564,369,136
+11224,11224,Coney Island,Waterfront,7,833,288,525,349,124
+11224,11224,Coney Island,Waterfront,8,744,300,537,376,120
+11224,11224,Coney Island,Waterfront,9,610,198,578,316,131
+11224,11224,Coney Island,Waterfront,10,567,148,574,293,124
+11224,11224,Coney Island,Waterfront,11,508,114,549,291,152
+11224,11224,Coney Island,Waterfront,12,481,78,504,277,158
+10021,10021,Upper East Side,Urban Core,1,737,93,908,331,269
+10021,10021,Upper East Side,Urban Core,2,771,110,944,360,266
+10021,10021,Upper East Side,Urban Core,3,878,148,1016,346,260
+10021,10021,Upper East Side,Urban Core,4,889,186,1178,361,279
+10021,10021,Upper East Side,Urban Core,5,964,228,1242,364,280
+10021,10021,Upper East Side,Urban Core,6,1028,261,1071,402,300
+10021,10021,Upper East Side,Urban Core,7,1029,256,992,392,292
+10021,10021,Upper East Side,Urban Core,8,936,239,1022,379,289
+10021,10021,Upper East Side,Urban Core,9,992,225,1279,364,301
+10021,10021,Upper East Side,Urban Core,10,921,167,1161,383,292
+10021,10021,Upper East Side,Urban Core,11,868,119,1164,356,318
+10021,10021,Upper East Side,Urban Core,12,745,97,1083,383,354
+10039,10039,Central Harlem,Mixed Use,1,525,67,680,346,183
+10039,10039,Central Harlem,Mixed Use,2,557,81,694,383,172
+10039,10039,Central Harlem,Mixed Use,3,609,111,829,376,168
+10039,10039,Central Harlem,Mixed Use,4,639,149,863,386,173
+10039,10039,Central Harlem,Mixed Use,5,678,152,894,390,188
+10039,10039,Central Harlem,Mixed Use,6,780,186,776,390,204
+10039,10039,Central Harlem,Mixed Use,7,735,190,777,449,187
+10039,10039,Central Harlem,Mixed Use,8,649,168,780,421,194
+10039,10039,Central Harlem,Mixed Use,9,691,155,948,398,201
+10039,10039,Central Harlem,Mixed Use,10,638,121,882,365,182
+10039,10039,Central Harlem,Mixed Use,11,574,94,842,343,204
+10039,10039,Central Harlem,Mixed Use,12,515,69,762,385,262
+11234,11234,Flatlands,Residential,1,244,46,344,424,114
+11234,11234,Flatlands,Residential,2,239,51,347,409,100
+11234,11234,Flatlands,Residential,3,295,77,359,441,115
+11234,11234,Flatlands,Residential,4,285,93,403,448,103
+11234,11234,Flatlands,Residential,5,354,111,362,419,109
+11234,11234,Flatlands,Residential,6,345,132,341,433,109
+11234,11234,Flatlands,Residential,7,315,127,314,446,110
+11234,11234,Flatlands,Residential,8,353,131,366,480,107
+11234,11234,Flatlands,Residential,9,338,114,413,455,118
+11234,11234,Flatlands,Residential,10,321,85,418,419,120
+11234,11234,Flatlands,Residential,11,266,58,357,389,137
+11234,11234,Flatlands,Residential,12,250,50,359,395,149
+11370,11370,East Elmhurst,Transit Hub,1,367,52,838,508,177
+11370,11370,East Elmhurst,Transit Hub,2,384,57,850,500,175
+11370,11370,East Elmhurst,Transit Hub,3,452,77,922,544,182
+11370,11370,East Elmhurst,Transit Hub,4,480,100,1036,588,187
+11370,11370,East Elmhurst,Transit Hub,5,549,126,1099,555,206
+11370,11370,East Elmhurst,Transit Hub,6,591,133,905,612,212
+11370,11370,East Elmhurst,Transit Hub,7,577,134,990,659,220
+11370,11370,East Elmhurst,Transit Hub,8,497,127,1010,633,198
+11370,11370,East Elmhurst,Transit Hub,9,494,120,1056,582,196
+11370,11370,East Elmhurst,Transit Hub,10,509,89,1034,567,209
+11370,11370,East Elmhurst,Transit Hub,11,417,69,1039,504,248
+11370,11370,East Elmhurst,Transit Hub,12,431,51,1018,596,290
+11417,11417,Ozone Park,Mixed Use,1,278,50,402,410,132
+11417,11417,Ozone Park,Mixed Use,2,296,51,486,427,124
+11417,11417,Ozone Park,Mixed Use,3,337,74,489,427,122
+11417,11417,Ozone Park,Mixed Use,4,353,98,533,496,136
+11417,11417,Ozone Park,Mixed Use,5,368,112,482,467,129
+11417,11417,Ozone Park,Mixed Use,6,395,115,497,462,128
+11417,11417,Ozone Park,Mixed Use,7,380,125,441,477,141
+11417,11417,Ozone Park,Mixed Use,8,408,117,489,487,146
+11417,11417,Ozone Park,Mixed Use,9,395,100,528,507,134
+11417,11417,Ozone Park,Mixed Use,10,360,90,525,430,155
+11417,11417,Ozone Park,Mixed Use,11,318,63,526,460,153
+11417,11417,Ozone Park,Mixed Use,12,315,48,494,435,188
+11432,11432,Jamaica Center,Transit Hub,1,490,66,945,462,227
+11432,11432,Jamaica Center,Transit Hub,2,538,69,1036,424,210
+11432,11432,Jamaica Center,Transit Hub,3,598,103,1131,470,225
+11432,11432,Jamaica Center,Transit Hub,4,656,126,1097,497,230
+11432,11432,Jamaica Center,Transit Hub,5,689,135,1126,530,236
+11432,11432,Jamaica Center,Transit Hub,6,773,163,1152,521,250
+11432,11432,Jamaica Center,Transit Hub,7,779,164,968,514,236
+11432,11432,Jamaica Center,Transit Hub,8,717,145,984,540,218
+11432,11432,Jamaica Center,Transit Hub,9,768,144,1318,484,282
+11432,11432,Jamaica Center,Transit Hub,10,742,106,1315,473,269
+11432,11432,Jamaica Center,Transit Hub,11,543,79,1118,468,285
+11432,11432,Jamaica Center,Transit Hub,12,597,62,1216,469,317
+11004,11004,Glen Oaks,Residential,1,166,44,220,305,73
+11004,11004,Glen Oaks,Residential,2,185,44,239,316,76
+11004,11004,Glen Oaks,Residential,3,223,64,262,364,83
+11004,11004,Glen Oaks,Residential,4,237,77,268,389,82
+11004,11004,Glen Oaks,Residential,5,233,89,277,385,77
+11004,11004,Glen Oaks,Residential,6,259,107,240,356,79
+11004,11004,Glen Oaks,Residential,7,232,103,240,387,85
+11004,11004,Glen Oaks,Residential,8,239,106,247,401,79
+11004,11004,Glen Oaks,Residential,9,252,91,274,368,87
+11004,11004,Glen Oaks,Residential,10,209,73,283,354,81
+11004,11004,Glen Oaks,Residential,11,210,53,268,368,98
+11004,11004,Glen Oaks,Residential,12,176,39,228,322,109

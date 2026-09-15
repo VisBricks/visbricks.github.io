@@ -2,19 +2,94 @@
   "slug": "polar-facet",
   "starter": "polar-facet",
   "completedCase": "chord-circular-stacked-facet-concat",
-  "data": ["data/chord_polar_line_nodes.csv", "data/chord_polar_line_links.csv"],
+  "data": [
+    "data/chord_polar_line_nodes.csv",
+    "data/chord_polar_line_links.csv"
+  ],
   "blocks": [
     {
       "chartType": "Chord",
-      "bindings": { "key": "node_id", "source": "source", "target": "target", "value": "flow_twh" }
+      "bindings": {
+        "key": "node_id",
+        "source": "source",
+        "target": "target",
+        "value": "flow_twh"
+      }
     },
     {
       "chartType": "CircularStackedBarChart",
-      "bindings": { "theta": "generation_gwh", "radius": "week", "color": "energy_source", "series": "energy_source" }
+      "bindings": {
+        "theta": "generation_gwh",
+        "radius": "week",
+        "color": "energy_source",
+        "series": "energy_source"
+      }
     }
   ],
   "composition": [
-    { "type": "facet", "field": "node_id", "coordinateSystem": "Polar" },
-    { "type": "concat", "direction": "radial", "sharedChannels": ["angle"] }
-  ]
+    {
+      "type": "facet",
+      "field": "node_id",
+      "coordinateSystem": "Polar"
+    },
+    {
+      "type": "concat",
+      "direction": "radial",
+      "sharedChannels": [
+        "angle"
+      ]
+    }
+  ],
+  "configuration": "configure.js",
+  "status": "complete",
+  "gallery": {
+    "number": "04",
+    "title": "Polar Facet Concat",
+    "description": "A graph-backed Chord and a Circular Stacked Bar arrive as separate, fully bound polar blocks.",
+    "tags": [
+      "Polar",
+      "Facet",
+      "Concat"
+    ],
+    "blocks": [
+      "Chord",
+      "Circular Stacked Bar"
+    ],
+    "coordinateSystems": [
+      "Polar"
+    ],
+    "file": {
+      "type": "PAIRED CSV",
+      "name": "chord_polar_line_nodes.csv + chord_polar_line_links.csv",
+      "description": "Node observations and source\u2013target relationships stored as two related tables.",
+      "files": [
+        "chord_polar_line_nodes.csv",
+        "chord_polar_line_links.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "node_id",
+        "role": "Node key / facet"
+      },
+      {
+        "field": "source \u2192 target",
+        "role": "Chord links"
+      },
+      {
+        "field": "generation_gwh",
+        "role": "Angle"
+      },
+      {
+        "field": "energy_source",
+        "role": "Series / color"
+      }
+    ],
+    "composition": "Facet the circular bars by node, then concatenate them with the Chord on a shared angle."
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "8c6dab4131f3de299044aa545e2aaa9346139796f4b721412ff9165dea0352da",
+    "source": "https://visbricks.github.io/editor/?case=chord-circular-stacked-facet-concat"
+  }
 }

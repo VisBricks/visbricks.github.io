@@ -1,0 +1,18 @@
+{
+  "slug": "_editor-samples",
+  "role": "editor-support",
+  "description": "Shared chart defaults and existing data-menu samples; not a Gallery card.",
+  "data": [
+    "data/academic_scores.csv",
+    "data/case1.csv",
+    "data/case3.csv",
+    "data/chord_edges.csv",
+    "data/chord_nodes.csv",
+    "data/d3_hexbin_diamonds.csv",
+    "data/default_chart_data.csv",
+    "data/edges.csv",
+    "data/hexbin_graph_links.csv",
+    "data/hexbin_graph_nodes.csv",
+    "data/nodes.csv"
+  ]
+}

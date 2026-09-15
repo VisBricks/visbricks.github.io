@@ -1,0 +1,254 @@
+{
+  "slug": "geographic-network",
+  "title": "ZIP Map, Network & Nested Stacked Bars",
+  "status": "complete",
+  "preview": {
+    "path": "preview.svg",
+    "format": "Editor SVG export with embedded live WebGL raster layers and vector nested charts",
+    "source": "https://visbricks.github.io/editor/?case=geographic-network-layer-nested-bars",
+    "capturedOn": "2026-09-15",
+    "sha256": "3406dc30afbb294ec8ed11b225a39597dc9365d09acc3d7e6793ae6a6a1a8418"
+  },
+  "data": {
+    "files": [
+      "data/case2.csv",
+      "data/case2_graph_nodes.csv",
+      "data/case2_graph_links.csv",
+      "data/nyc-zip-boundaries.geojson"
+    ],
+    "polygonRows": 45196,
+    "incidentZipValues": 198,
+    "matchedGeometryFeatures": 177,
+    "unmatchedIncidentZipValues": [
+      "",
+      "00083",
+      "01123",
+      "10000",
+      "100354",
+      "10120",
+      "10121",
+      "10151",
+      "11202",
+      "11242"
+    ],
+    "graphDatasetName": "geo",
+    "nodeObservationRows": 120,
+    "uniqueNodes": 10,
+    "edges": 13,
+    "geometryNote": "Use supplied ZIP GeoJSON and its ID aliases. CSV ZIP values absent from this geometry are not rendered."
+  },
+  "blocks": [
+    {
+      "type": "PolygonLayer",
+      "dataset": "case2.csv",
+      "bindings": {
+        "idField": "incident_zip",
+        "geometry": "nyc-zip-boundaries.geojson",
+        "colorField": "sighting_count",
+        "aggregation": "sum"
+      }
+    },
+    {
+      "type": "ScatterplotLayer",
+      "dataset": "geo",
+      "bindings": {
+        "idField": "point",
+        "nodeId": "id",
+        "geometry": "nyc-zip-boundaries.geojson"
+      },
+      "size": 7,
+      "color": "#185876"
+    },
+    {
+      "type": "Graph Link (Geographic)",
+      "dataset": "geo",
+      "bindings": {
+        "source": "source",
+        "target": "target",
+        "weight": "value"
+      },
+      "creation": "Drag the Link catalog item directly onto the positioned Scatterplot; links layer below its nodes."
+    },
+    {
+      "type": "StackedBarChart",
+      "dataset": "geo",
+      "bindings": {
+        "x": "month",
+        "valueFields": [
+          "pedestrian_trips",
+          "bicycle_trips",
+          "transit_rides",
+          "vehicle_trips",
+          "delivery_trips"
+        ],
+        "nestedContext": "point"
+      },
+      "axesVisible": false
+    }
+  ],
+  "compositionOperations": [
+    {
+      "type": "graph-link-drop",
+      "target": "ScatterplotLayer"
+    },
+    {
+      "type": "layer",
+      "target": "PolygonLayer",
+      "source": "ScatterplotLayer"
+    },
+    {
+      "type": "nested",
+      "parent": "ScatterplotLayer",
+      "child": "StackedBarChart",
+      "contextField": "point",
+      "instances": 10
+    }
+  ],
+  "expectedRenderStructure": {
+    "frame": [
+      900,
+      800
+    ],
+    "polygonFeatures": 177,
+    "scatterplotNodes": 10,
+    "links": 13,
+    "nestedStackedBars": 10,
+    "monthsPerNode": 12,
+    "seriesPerBar": 5,
+    "barSegments": 600,
+    "webglImages": 2,
+    "messageFrames": 10,
+    "arrowsToOriginalNodes": 10,
+    "calloutOutlinePaths": 10
+  },
+  "mapViewState": {
+    "longitude": -73.94,
+    "latitude": 40.69,
+    "zoom": 9.65,
+    "pitch": 0,
+    "bearing": 0
+  },
+  "callouts": {
+    "enabled": true,
+    "scale": 1.12,
+    "retainParent": true,
+    "offsetsByNode": {
+      "10021": [
+        -140,
+        -20
+      ],
+      "10039": [
+        -85,
+        -100
+      ],
+      "10307": [
+        15,
+        60
+      ],
+      "11004": [
+        0,
+        -95
+      ],
+      "11224": [
+        -105,
+        65
+      ],
+      "11231": [
+        -135,
+        -30
+      ],
+      "11234": [
+        55,
+        105
+      ],
+      "11370": [
+        15,
+        -110
+      ],
+      "11417": [
+        100,
+        90
+      ],
+      "11432": [
+        125,
+        10
+      ]
+    },
+    "outline": "One closed rounded-frame path with an integrated tail anchored to the original node."
+  },
+  "mapStyle": "Editor default light Mapbox style from master; uses VITE_MAPBOX_TOKEN from the environment.",
+  "configuration": "configure.js",
+  "completedCase": "geographic-network-layer-nested-bars",
+  "gallery": {
+    "number": "03",
+    "title": "ZIP Map, Network & Nested Stacked Bars",
+    "description": "A geographic Scatterplot positions ten nodes using ZIP geometry. Graph links connect those same positions above ZIP polygons colored by total sightings. Each node connects to a message frame containing twelve monthly bars stacked by five travel modes.",
+    "tags": [
+      "Geographic",
+      "Layer",
+      "Nested"
+    ],
+    "blocks": [
+      "Scatterplot",
+      "Graph Link",
+      "Polygon",
+      "Stacked Bar"
+    ],
+    "coordinateSystems": [
+      "Geographic",
+      "Cartesian"
+    ],
+    "file": {
+      "type": "CSV + GRAPH CSV PAIR + GEOJSON",
+      "name": "case2.csv + geo graph + NYC ZIP geometry",
+      "description": "case2.csv contains sighting observations keyed by incident_zip. The geo dataset pairs 120 monthly observations for ten nodes with thirteen source\u2013target edges. Both maps join the same case-owned NYC ZIP GeoJSON; 177 geometry features match ZIPs in case2.csv; unmatched ZIP values are omitted.",
+      "files": [
+        "case2.csv",
+        "case2_graph_nodes.csv",
+        "case2_graph_links.csv",
+        "nyc-zip-boundaries.geojson"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "incident_zip",
+        "role": "Polygon CSV \u2192 GeoJSON ZIP ID join"
+      },
+      {
+        "field": "sighting_count",
+        "role": "Polygon color \u00b7 sum per ZIP geometry"
+      },
+      {
+        "field": "point",
+        "role": "geo Scatterplot node \u2192 GeoJSON ZIP ID join"
+      },
+      {
+        "field": "id \u00b7 source \u00b7 target \u00b7 value",
+        "role": "Graph node identity \u00b7 link endpoints \u00b7 link weight"
+      },
+      {
+        "field": "month",
+        "role": "Nested Stacked Bar X (12 months)"
+      },
+      {
+        "field": "pedestrian_trips \u00b7 bicycle_trips \u00b7 transit_rides \u00b7 vehicle_trips \u00b7 delivery_trips",
+        "role": "Stacked Bar Y fold \u00b7 five travel-mode series"
+      },
+      {
+        "field": "point",
+        "role": "Inherited node filter for each nested chart"
+      }
+    ],
+    "composition": "Start with the independently bound Polygon, geographic Scatterplot, and Stacked Bar. First position nodes by joining geo.point to the ZIP geometry. Drag Graph Link (Geographic) directly onto the Scatterplot to add links at those node positions. Layer the Scatterplot over the Polygon, then nest the Stacked Bar into the Scatterplot points. Each nested chart inherits its node\u2019s point filter and shows that node\u2019s twelve monthly observations. Enable its message frame and offset it from the point: the arrow stays anchored to the original node. Polygon color sums sighting_count for each matched ZIP geometry."
+  },
+  "starterConfiguration": {
+    "independentBlocks": [
+      "PolygonLayer",
+      "ScatterplotLayer",
+      "StackedBarChart"
+    ],
+    "graphLinkEnabled": false,
+    "nestedInstances": 0
+  },
+  "starter": "geographic-network"
+}

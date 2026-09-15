@@ -1,11 +1,180 @@
 {
   "slug": "tree-leaf-axis",
   "starter": "tree-leaf-axis",
-  "completedCase": null,
-  "status": "starter-only",
-  "data": ["data/tree_nodes.csv", "data/default_chart_data.csv"],
+  "completedCase": "dendrogram-nested-radial-area",
+  "status": "complete",
+  "data": [
+    "data/tree_nodes.csv"
+  ],
   "blocks": [
-    { "chartType": "Dendrogram" },
-    { "chartType": "GroupedBarChart" }
-  ]
+    {
+      "chartType": "Dendrogram",
+      "frame": {
+        "width": 1600,
+        "height": 1800
+      },
+      "bindings": {
+        "key": "node_id",
+        "parent": "parent_id"
+      },
+      "treeDirection": "right",
+      "labelsVisible": false
+    },
+    {
+      "chartType": "RadialStackedBarChart",
+      "frame": {
+        "width": 320,
+        "height": 320
+      },
+      "barShape": "sector",
+      "bindings": {
+        "segment": "month",
+        "radius": "metric_value",
+        "series": "metric"
+      },
+      "dataTransforms": [
+        {
+          "kind": "fold",
+          "sourceFields": [
+            "metric_1",
+            "metric_2",
+            "metric_3",
+            "metric_4",
+            "metric_5"
+          ],
+          "keyOutputField": "metric",
+          "valueOutputField": "metric_value"
+        }
+      ],
+      "angleSpan": 360
+    },
+    {
+      "chartType": "AreaChart",
+      "frame": {
+        "width": 320,
+        "height": 220
+      },
+      "bindings": {
+        "x": "month",
+        "y": "metric_1"
+      },
+      "aggregations": {
+        "y": "sum"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "enter",
+      "parent": "Dendrogram",
+      "level": "node"
+    },
+    {
+      "type": "nested",
+      "parent": "Dendrogram",
+      "child": "RadialStackedBarChart",
+      "targets": "all 15 nodes",
+      "inheritedFilter": "node_id",
+      "offset": {
+        "x": -78,
+        "y": 0
+      },
+      "childScale": 0.5833333333333334,
+      "retainParent": false
+    },
+    {
+      "type": "nested",
+      "parent": "Dendrogram",
+      "child": "AreaChart",
+      "targets": "all 15 nodes",
+      "inheritedFilter": "node_id",
+      "offset": {
+        "x": 80,
+        "y": 0
+      },
+      "childScale": 0.625,
+      "retainParent": false
+    },
+    {
+      "type": "link-routing",
+      "boundary": "union of nested child occupied frames including offsets",
+      "source": "right edge center",
+      "target": "left edge center"
+    }
+  ],
+  "expectedRender": {
+    "width": 1827.5,
+    "height": 2002,
+    "dendrogramNodes": 15,
+    "visibleNodeDots": 0,
+    "dendrogramLinks": 14,
+    "nestedRelationships": 30,
+    "radialStackedBars": 15,
+    "radialSectors": 900,
+    "areaCharts": 15,
+    "pointsPerArea": 12
+  },
+  "preview": {
+    "path": "preview.svg",
+    "source": "https://visbricks.github.io/editor/?case=dendrogram-nested-radial-area",
+    "capturedOn": "2026-09-15",
+    "sha256": "d76049ebcb28523a1caeffe927aa1cc2ddf0f91e57943dff82eec4448915e20c"
+  },
+  "verification": {
+    "radialValuesChecked": 900,
+    "areaCurvesComparedToNodeFilteredData": 15,
+    "visibleOriginalNodeDots": 0,
+    "linksCheckedAtCombinedChildEdges": 14
+  },
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "06",
+    "title": "Dendrogram with Radial & Area Profiles",
+    "description": "A horizontal Dendrogram replaces all fifteen node dots with two monthly profiles: a sector-based Radial Stacked Bar on the left and an Area Chart on the right. Internal nodes and leaves both retain their own observations.",
+    "tags": [
+      "Dendrogram",
+      "Nested",
+      "Monthly profiles"
+    ],
+    "blocks": [
+      "Dendrogram",
+      "Radial Stacked Bar (Sector)",
+      "Area Chart"
+    ],
+    "coordinateSystems": [
+      "Cartesian",
+      "Polar"
+    ],
+    "file": {
+      "type": "MONTHLY HIERARCHY CSV",
+      "name": "tree_nodes.csv",
+      "description": "180 rows: fifteen nodes observed over twelve months in 2025. node_id and parent_id define the tree; month and metric_1\u2013metric_5 supply each node\u2019s profiles. The tree uses one structural record per node while both nested charts keep the full monthly observations.",
+      "files": [
+        "tree_nodes.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "node_id \u2192 parent_id",
+        "role": "Dendrogram node and parent identity"
+      },
+      {
+        "field": "month",
+        "role": "Radial Stacked Bar angular categories \u00b7 Area Chart X"
+      },
+      {
+        "field": "metric_1 \u2026 metric_5",
+        "role": "Fold to metric / metric_value \u00b7 radial stack series / radius"
+      },
+      {
+        "field": "metric_1",
+        "role": "Area Chart Y"
+      },
+      {
+        "field": "node_id",
+        "role": "Inherited node filter for both nested charts"
+      }
+    ],
+    "composition": "Enter the Dendrogram node level and nest the Radial Stacked Bar (Sector) on every node, offset to the left. Nest the Area Chart on the same nodes, offset to the right. Hide the original node dots so each pair of charts replaces its node. The taller layout creates a nearly square composition. Each child inherits only its node_id, preserving all twelve months for that node."
+  }
 }

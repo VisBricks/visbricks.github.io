@@ -1,0 +1,17 @@
+source,target,value
+black,black,11975
+black,blond,5871
+black,brown,8916
+black,red,2868
+blond,black,1951
+blond,blond,10048
+blond,brown,2060
+blond,red,6171
+brown,black,8010
+brown,blond,16145
+brown,brown,8090
+brown,red,8045
+red,black,1013
+red,blond,990
+red,brown,940
+red,red,6907
