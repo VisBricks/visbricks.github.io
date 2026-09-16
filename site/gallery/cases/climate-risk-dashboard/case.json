@@ -1,0 +1,138 @@
+{
+  "slug": "climate-risk-dashboard",
+  "starter": "climate-risk-dashboard",
+  "completedCase": "climate-risk-dashboard-nested-concat",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "StackedAreaChart",
+      "bindings": {
+        "x": "month",
+        "yFold": [
+          "heat",
+          "flood",
+          "wind",
+          "fire"
+        ]
+      }
+    },
+    {
+      "chartType": "Scatterplot",
+      "bindings": {
+        "x": "month",
+        "y": "temperature_anomaly",
+        "color": "region",
+        "size": "exposure"
+      }
+    },
+    {
+      "chartType": "PieChart",
+      "bindings": {
+        "thetaFold": [
+          "heat",
+          "flood",
+          "wind",
+          "fire"
+        ],
+        "radius": "exposure"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "nested",
+      "parent": "Scatterplot",
+      "child": "PieChart",
+      "target": "all district-month points"
+    },
+    {
+      "type": "concat",
+      "direction": "vertical",
+      "sharedChannels": [
+        "x"
+      ],
+      "before": "StackedAreaChart",
+      "after": "Scatterplot"
+    }
+  ],
+  "expectedRender": {
+    "areaSeries": 4,
+    "scatterPoints": 48,
+    "nestedPies": 48,
+    "pieArcs": 192
+  },
+  "data": [
+    "data/climate_risk.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "13",
+    "title": "Climate Risk Dashboard",
+    "description": "Seasonal hazard totals align with district anomalies, where each observation expands into a hazard-mix pie.",
+    "tags": [
+      "Climate",
+      "Nested",
+      "Stacked Area"
+    ],
+    "blocks": [
+      "Stacked Area",
+      "Scatterplot",
+      "Pie Chart"
+    ],
+    "coordinateSystems": [
+      "Cartesian",
+      "Polar"
+    ],
+    "file": {
+      "type": "WIDE CSV",
+      "name": "climate_risk.csv",
+      "description": "Forty-eight monthly district observations across four regions and four hazard components.",
+      "files": [
+        "climate_risk.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "month",
+        "role": "Shared X"
+      },
+      {
+        "field": "temperature_anomaly",
+        "role": "Scatterplot Y"
+      },
+      {
+        "field": "heat · flood · wind · fire",
+        "role": "Area stack · nested Pie"
+      },
+      {
+        "field": "exposure",
+        "role": "Point and Pie size"
+      }
+    ],
+    "composition": "Nest the hazard Pie in each district point and concatenate the Stacked Area above on shared month.",
+    "editorHelp": {
+      "introduction": "All blocks are already bound to the case-owned data and placed independently on the starter canvas.",
+      "steps": [
+        {
+          "title": "Build the composition",
+          "source": "Prepared blocks on the canvas",
+          "target": "The highlighted composition drop zone",
+          "action": "Nest the hazard Pie in each district point and concatenate the Stacked Area above on shared month.",
+          "result": "The blocks form the finished Gallery composition while retaining their configured data bindings."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "6d2b65d5b9bffa1126d286be7708175e16cef5b41d2ec253c3805ec4ebc13edb",
+    "source": "https://visbricks.github.io/editor/?case=climate-risk-dashboard-nested-concat",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "3c28528e5a143cf9b49e579aa8110e2b3676bec6c54c4755996ffba891dd30d6",
+      "width": 384,
+      "height": 298
+    }
+  }
+}

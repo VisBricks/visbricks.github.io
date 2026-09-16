@@ -103,7 +103,7 @@
     }
   ],
   "expectedRender": {
-    "width": 1827.5,
+    "width": 1818.007817864418,
     "height": 2002,
     "dendrogramNodes": 15,
     "visibleNodeDots": 0,
@@ -117,8 +117,14 @@
   "preview": {
     "path": "preview.svg",
     "source": "https://visbricks.github.io/editor/?case=dendrogram-nested-radial-area",
-    "capturedOn": "2026-09-15",
-    "sha256": "d76049ebcb28523a1caeffe927aa1cc2ddf0f91e57943dff82eec4448915e20c"
+    "capturedOn": "2026-09-16",
+    "sha256": "a8a823685fc8ae9c353cfb09a1c8690aed916bfcd18d835632461ed6fd8cabb7",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "251bb299f0765590cc42d91543fe44c9771bb40b2a36db6f62bb8668e3473b67",
+      "width": 349,
+      "height": 384
+    }
   },
   "verification": {
     "radialValuesChecked": 900,

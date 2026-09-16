@@ -73,7 +73,13 @@
     "path": "preview.svg",
     "source": "https://visbricks.github.io/editor/?case=sunburst-radial-dendrogram-shared-r",
     "capturedOn": "2026-09-15",
-    "sha256": "de77012aef7484eabbc30c01498bd128122fb936af2f849ef782d8bc98e2803c"
+    "sha256": "de77012aef7484eabbc30c01498bd128122fb936af2f849ef782d8bc98e2803c",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "22e87f8363cb51b63ceabd8864b505dd469d9935b8b11a16afb1f1ec01c34686",
+      "width": 384,
+      "height": 384
+    }
   },
   "configuration": "configure.js",
   "chartSpecifications": "chart-specs.json",

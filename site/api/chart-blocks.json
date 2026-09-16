@@ -13752,6 +13752,29 @@
               "quantitative"
             ],
             "emptyLabel": "Not bound"
+          },
+          {
+            "channel": "color",
+            "label": "User type",
+            "role": "style",
+            "required": false,
+            "accepts": [
+              "nominal",
+              "ordinal",
+              "quantitative"
+            ],
+            "emptyLabel": "Static"
+          },
+          {
+            "channel": "shape",
+            "label": "Role style",
+            "role": "style",
+            "required": false,
+            "accepts": [
+              "nominal",
+              "ordinal"
+            ],
+            "emptyLabel": "Static"
           }
         ],
         "id": "hexbin",
@@ -13860,6 +13883,57 @@
           "editor": {
             "label": "Y",
             "emptyLabel": "Not bound",
+            "configurable": true
+          }
+        },
+        {
+          "id": "color",
+          "label": "User type",
+          "kind": "style",
+          "channel": "color",
+          "required": false,
+          "accepts": [
+            "nominal",
+            "ordinal",
+            "quantitative"
+          ],
+          "minFields": 0,
+          "maxFields": 1,
+          "bindingModes": [
+            {
+              "kind": "field",
+              "minFields": 0,
+              "maxFields": 1
+            }
+          ],
+          "editor": {
+            "label": "User type",
+            "emptyLabel": "Static",
+            "configurable": true
+          }
+        },
+        {
+          "id": "shape",
+          "label": "Role style",
+          "kind": "style",
+          "channel": "shape",
+          "required": false,
+          "accepts": [
+            "nominal",
+            "ordinal"
+          ],
+          "minFields": 0,
+          "maxFields": 1,
+          "bindingModes": [
+            {
+              "kind": "field",
+              "minFields": 0,
+              "maxFields": 1
+            }
+          ],
+          "editor": {
+            "label": "Role style",
+            "emptyLabel": "Static",
             "configurable": true
           }
         }
@@ -14061,6 +14135,275 @@
         "unavailable": false
       },
       "image": "/site/api/blocks/hexbin.svg"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "chart-block:word-cloud",
+      "revision": 2,
+      "chartType": "WordCloud",
+      "aliases": [],
+      "label": "Word Cloud",
+      "families": [
+        "wordcloud"
+      ],
+      "dataShape": "tabular",
+      "data": {
+        "chartType": "WordCloud",
+        "label": "Word Cloud",
+        "channels": [
+          {
+            "channel": "x",
+            "label": "Word",
+            "semanticLabel": "Word",
+            "role": "dimension",
+            "required": true,
+            "accepts": [
+              "nominal",
+              "ordinal"
+            ],
+            "emptyLabel": "Not bound"
+          },
+          {
+            "channel": "y",
+            "label": "Weight",
+            "semanticLabel": "Weight",
+            "role": "measure",
+            "required": true,
+            "accepts": [
+              "quantitative"
+            ],
+            "emptyLabel": "Not bound"
+          },
+          {
+            "channel": "color",
+            "label": "Color",
+            "role": "style",
+            "required": false,
+            "accepts": [
+              "nominal",
+              "ordinal",
+              "quantitative"
+            ],
+            "emptyLabel": "Static"
+          }
+        ],
+        "id": "wordcloud",
+        "family": "wordcloud",
+        "renderer": "wordcloud",
+        "rendererVersion": 1,
+        "coordinateSystem": "CoordinateFree",
+        "markRole": "point",
+        "aggregationPolicy": "allowed",
+        "dataMode": "grouped-scalar",
+        "nestedContext": "bound-dimensions",
+        "requiresFunctionalDependency": false,
+        "requiresIndependentDimensions": true,
+        "allowFieldReuse": false,
+        "supportsLayerComposition": true,
+        "shareableChannels": [],
+        "unusedDimensionStrategies": [
+          "flatten",
+          "facet",
+          "nested"
+        ],
+        "dimensionUpgrades": [],
+        "requiredChannels": [
+          "x",
+          "y"
+        ],
+        "dimensions": {
+          "min": 1,
+          "max": 1
+        },
+        "measures": {
+          "min": 1,
+          "max": 1
+        },
+        "roles": [
+          {
+            "id": "x",
+            "kind": "dimension",
+            "accepts": [
+              "nominal",
+              "ordinal"
+            ],
+            "minFields": 1,
+            "maxFields": 1
+          },
+          {
+            "id": "y",
+            "kind": "measure",
+            "accepts": [
+              "quantitative"
+            ],
+            "minFields": 1,
+            "maxFields": 1
+          }
+        ],
+        "aggregation": {
+          "allowed": true,
+          "default": "sum"
+        }
+      },
+      "roles": [
+        {
+          "id": "x",
+          "label": "Word",
+          "kind": "dimension",
+          "channel": "x",
+          "required": true,
+          "accepts": [
+            "nominal",
+            "ordinal"
+          ],
+          "minFields": 1,
+          "maxFields": 1,
+          "bindingModes": [
+            {
+              "kind": "field",
+              "minFields": 1,
+              "maxFields": 1
+            }
+          ],
+          "editor": {
+            "label": "Word",
+            "emptyLabel": "Not bound",
+            "configurable": true
+          }
+        },
+        {
+          "id": "y",
+          "label": "Weight",
+          "kind": "measure",
+          "channel": "y",
+          "required": true,
+          "accepts": [
+            "quantitative"
+          ],
+          "minFields": 1,
+          "maxFields": 1,
+          "bindingModes": [
+            {
+              "kind": "field",
+              "minFields": 1,
+              "maxFields": 1
+            }
+          ],
+          "editor": {
+            "label": "Weight",
+            "emptyLabel": "Not bound",
+            "configurable": true
+          }
+        },
+        {
+          "id": "color",
+          "label": "Color",
+          "kind": "style",
+          "channel": "color",
+          "required": false,
+          "accepts": [
+            "nominal",
+            "ordinal",
+            "quantitative"
+          ],
+          "minFields": 0,
+          "maxFields": 1,
+          "bindingModes": [
+            {
+              "kind": "field",
+              "minFields": 0,
+              "maxFields": 1
+            }
+          ],
+          "editor": {
+            "label": "Color",
+            "emptyLabel": "Static",
+            "configurable": true
+          }
+        }
+      ],
+      "coordinateSystem": "CoordinateFree",
+      "spatialReferences": [
+        {
+          "id": "mark-anchors",
+          "kind": "anchor-set",
+          "semantic": "mark-anchor",
+          "exposure": "internal",
+          "compatibility": "type-exact",
+          "placement": {
+            "channel": "anchor"
+          }
+        }
+      ],
+      "structuralTargets": [
+        {
+          "id": "marks",
+          "markRole": "point",
+          "repeated": true,
+          "contextRoleIds": [
+            "x"
+          ],
+          "anchorReferenceId": "mark-anchors"
+        }
+      ],
+      "composition": {
+        "layer": {
+          "enabled": false
+        },
+        "concat": {
+          "enabled": false
+        },
+        "facet": {
+          "enabled": true
+        },
+        "nested": {
+          "asParent": true,
+          "asChild": true
+        },
+        "capabilities": [],
+        "dropAreas": [
+          {
+            "id": "nested-mark",
+            "operation": "nested",
+            "geometry": {
+              "kind": "structural-target",
+              "targetId": "marks"
+            },
+            "sharedReferenceIds": [],
+            "exclusiveGroup": "nested"
+          },
+          {
+            "id": "enter",
+            "operation": "enter",
+            "geometry": {
+              "kind": "enter-portal",
+              "maximumDiameterPx": 72
+            },
+            "sharedReferenceIds": [],
+            "exclusiveGroup": "navigation"
+          }
+        ]
+      },
+      "renderer": {
+        "kind": "svg",
+        "key": "wordcloud",
+        "version": 1
+      },
+      "catalog": {
+        "candidateId": "builtin-template:word-cloud",
+        "label": "Word Cloud",
+        "previewKey": "WordCloud",
+        "defaultSize": {
+          "width": 420,
+          "height": 260
+        },
+        "familyOrder": {
+          "wordcloud": 9007199254740991
+        },
+        "hidden": false,
+        "unavailable": false
+      },
+      "image": "/site/api/blocks/word-cloud.svg"
     },
     {
       "schemaVersion": 1,

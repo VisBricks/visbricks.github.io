@@ -1,0 +1,112 @@
+{
+  "slug": "keyword-flow-sankey",
+  "starter": "keyword-flow-sankey",
+  "completedCase": "sankey-ribbon-nested-wordclouds",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "Sankey",
+      "bindings": {
+        "source": "source",
+        "target": "target",
+        "value": "value",
+        "color": "topic"
+      }
+    },
+    {
+      "chartType": "WordCloud",
+      "bindings": {
+        "x": "word",
+        "y": "weight",
+        "color": "topic"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "nested",
+      "parent": "Sankey ribbon",
+      "child": "WordCloud",
+      "target": "all eight source-target ribbons"
+    }
+  ],
+  "expectedRender": {
+    "sankeyNodes": 6,
+    "sankeyRibbons": 8,
+    "nestedWordClouds": 8,
+    "keywordRowsPerRibbon": 24,
+    "renderedKeywordsPerRibbon": 24,
+    "renderedKeywordMarks": 192,
+    "wordCloudLayout": "adaptive binary mask"
+  },
+  "data": [
+    "data/flow_keywords.csv",
+    "data/keyword_flows.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "10",
+    "title": "Keyword Flow Ribbons",
+    "description": "Eight Sankey bands are filled with dense semantic word clouds packed directly inside each curved ribbon silhouette.",
+    "tags": [
+      "Nested",
+      "Sankey",
+      "Word Cloud"
+    ],
+    "blocks": [
+      "Sankey",
+      "Word Cloud"
+    ],
+    "coordinateSystems": [
+      "Coordinate Free"
+    ],
+    "file": {
+      "type": "GRAPH CSV",
+      "name": "keyword_flows.csv + flow_keywords.csv",
+      "description": "Eight weighted stage transitions and 24 meaningful, weighted keywords keyed to every source-target pair.",
+      "files": [
+        "keyword_flows.csv",
+        "flow_keywords.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "source · target · value",
+        "role": "Sankey ribbon identity and width"
+      },
+      {
+        "field": "word · weight",
+        "role": "Nested Word Cloud text and size"
+      },
+      {
+        "field": "topic",
+        "role": "Keyword color"
+      }
+    ],
+    "composition": "Nest Word Cloud into every Sankey link mark. Each parent mark is sampled into an arbitrary binary mask, then an integral-occupancy layout packs the source-target vocabulary inside that exact region and clips the resulting SVG text to its silhouette.",
+    "editorHelp": {
+      "introduction": "The starter provides one bound Sankey and one bound Word Cloud using the same graph dataset.",
+      "steps": [
+        {
+          "title": "Explain every ribbon",
+          "source": "Word Cloud",
+          "target": "Sankey ribbon marks",
+          "action": "Nest across all links; source and target are inherited as child filters.",
+          "result": "Every band receives its own 24-keyword semantic cloud, adaptively packed and clipped to the curved ribbon rather than a rectangular child frame."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "e0ca531770f4468eff027bcc46d044e93951d761be12f36b500cc6082c225f1f",
+    "source": "https://visbricks.github.io/editor/?case=sankey-ribbon-nested-wordclouds",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "848ecd8b6ca5c6506b6b3abd1db4d09df79855526ebd27e543335e6270e41521",
+      "width": 384,
+      "height": 233
+    }
+  }
+}

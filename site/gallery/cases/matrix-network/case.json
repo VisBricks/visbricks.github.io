@@ -232,6 +232,12 @@
   "preview": {
     "path": "preview.svg",
     "sha256": "7822a86caf45b0c936b7666dd28879bde1897ba40a597f2fe5f8d1c6ad26afe8",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "f215351982f6fbd3f5ce1e42cd69b78208a011f16599f92a4708b847be887369",
+      "width": 384,
+      "height": 350
+    },
     "source": "https://visbricks.github.io/editor/?case=matrix-force-heatmap-marginal-bars"
   }
 }

@@ -6,8 +6,14 @@
     "path": "preview.svg",
     "format": "Editor SVG export with embedded live WebGL raster layers and vector nested charts",
     "source": "https://visbricks.github.io/editor/?case=geographic-network-layer-nested-bars",
-    "capturedOn": "2026-09-15",
-    "sha256": "3406dc30afbb294ec8ed11b225a39597dc9365d09acc3d7e6793ae6a6a1a8418"
+    "capturedOn": "2026-09-16",
+    "sha256": "7941d6e0e295de740873afa7d7934411be762bdecc145d9d37c89ae79b7bc664",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "598f31552bfc52965aef1b10652df502967fd719803f82d5b2782baf432e6c2b",
+      "width": 384,
+      "height": 341
+    }
   },
   "data": {
     "files": [

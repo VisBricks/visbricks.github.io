@@ -1,0 +1,117 @@
+{
+  "slug": "forest-carbon-rings",
+  "starter": "forest-carbon-rings",
+  "completedCase": "forest-carbon-rings-angular-concat",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "Sunburst",
+      "bindings": {
+        "key": "node_id",
+        "parent": "parent_id",
+        "value": "carbon_tons",
+        "color": "level"
+      }
+    },
+    {
+      "chartType": "RadialDendrogram",
+      "bindings": {
+        "key": "node_id",
+        "parent": "parent_id",
+        "color": "moisture"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "concat",
+      "direction": "angular",
+      "placement": "after",
+      "sharedChannels": [
+        "radius"
+      ],
+      "members": [
+        "Sunburst",
+        "RadialDendrogram"
+      ]
+    }
+  ],
+  "expectedRender": {
+    "hierarchyNodes": 31,
+    "sunburstArcs": 30,
+    "dendrogramNodes": 31,
+    "dendrogramLinks": 30
+  },
+  "data": [
+    "data/forest_hierarchy.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "12",
+    "title": "Forest Carbon Rings",
+    "description": "Weighted carbon sectors and the sampling tree occupy two halves of a shared hierarchy circle.",
+    "tags": [
+      "Hierarchy",
+      "Sunburst",
+      "Concat"
+    ],
+    "blocks": [
+      "Sunburst",
+      "Radial Dendrogram"
+    ],
+    "coordinateSystems": [
+      "Polar"
+    ],
+    "file": {
+      "type": "HIERARCHY CSV",
+      "name": "forest_hierarchy.csv",
+      "description": "A four-level forest hierarchy linking biome, vertical layer, plot, and species records.",
+      "files": [
+        "forest_hierarchy.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "node_id → parent_id",
+        "role": "Shared hierarchy"
+      },
+      {
+        "field": "carbon_tons",
+        "role": "Sunburst sector weight"
+      },
+      {
+        "field": "level",
+        "role": "Sunburst color"
+      },
+      {
+        "field": "moisture",
+        "role": "Dendrogram node color"
+      }
+    ],
+    "composition": "Angularly concatenate the weighted Sunburst and Radial Dendrogram around a shared center and hierarchy radius.",
+    "editorHelp": {
+      "introduction": "All blocks are already bound to the case-owned data and placed independently on the starter canvas.",
+      "steps": [
+        {
+          "title": "Build the composition",
+          "source": "Prepared blocks on the canvas",
+          "target": "The highlighted composition drop zone",
+          "action": "Angularly concatenate the weighted Sunburst and Radial Dendrogram around a shared center and hierarchy radius.",
+          "result": "The blocks form the finished Gallery composition while retaining their configured data bindings."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "7051ddf655cd4cf79c2dc4077f1c3016845a88ef3eecf1e6dab2e6910cb5f7d3",
+    "source": "https://visbricks.github.io/editor/?case=forest-carbon-rings-angular-concat",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "92ce61981f04b47ed07e91e8aa70958d97eadd824df11a6b37c4df68bd3a72ec",
+      "width": 384,
+      "height": 384
+    }
+  }
+}

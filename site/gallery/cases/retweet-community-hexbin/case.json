@@ -1,0 +1,118 @@
+{
+  "slug": "retweet-community-hexbin",
+  "starter": "retweet-community-hexbin",
+  "completedCase": "retweet-community-hexbin-links",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "Hexbin",
+      "bindings": {
+        "x": "x",
+        "y": "y",
+        "color": "community",
+        "shape": "user_type"
+      }
+    },
+    {
+      "chartType": "GraphLink",
+      "bindings": {
+        "source": "source",
+        "target": "target",
+        "value": "weight",
+        "color": "relation_type"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "layer",
+      "sharedChannels": [
+        "x",
+        "y"
+      ],
+      "target": "Hexbin",
+      "source": "GraphLink"
+    }
+  ],
+  "expectedRender": {
+    "users": 1881,
+    "hexagons": 1881,
+    "communities": 8,
+    "userTypes": 3,
+    "retweetLinks": 392
+  },
+  "data": [
+    "data/retweet_users.csv",
+    "data/retweet_links.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "09",
+    "title": "Retweet Community Honeycomb",
+    "description": "A dense, ragged hexagonal social field, divided by eight organically winding communities and crossed by hierarchical retweet arcs.",
+    "tags": [
+      "Layer",
+      "Hexbin",
+      "Graph Link"
+    ],
+    "blocks": [
+      "Hexbin",
+      "Graph Link"
+    ],
+    "coordinateSystems": [
+      "Cartesian"
+    ],
+    "file": {
+      "type": "GRAPH CSV",
+      "name": "retweet_users.csv + retweet_links.csv",
+      "description": "1,881 users form a densely packed hexagonal island with an uneven perimeter and eight irregular communities, linked by leader-to-retweeter-to-receiver propagation edges.",
+      "files": [
+        "retweet_users.csv",
+        "retweet_links.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "x · y",
+        "role": "One user at each packed hex position"
+      },
+      {
+        "field": "community",
+        "role": "Hex fill, forming eight contiguous regions with irregular boundaries"
+      },
+      {
+        "field": "user_type",
+        "role": "Hex border style for Opinion leader, Retweeter, or Receiver"
+      },
+      {
+        "field": "source · target · weight",
+        "role": "Retweet relationship, endpoints, and strength"
+      }
+    ],
+    "composition": "Layer curved Graph Link arcs over a tightly packed Hexbin on shared X and Y scales. The users form one roughly hexagonal island with a broken outer rim; warped community regions avoid straight grid-like boundaries. Eight communities control fill, user_type controls the role border, and edges mainly flow from opinion leaders to retweeters and then receivers.",
+    "editorHelp": {
+      "introduction": "The starter places the packed Hexbin and bound retweet Graph Link separately.",
+      "steps": [
+        {
+          "title": "Overlay retweet paths",
+          "source": "Graph Link",
+          "target": "Hexbin",
+          "action": "Create a Cartesian Layer sharing X and Y.",
+          "result": "Links connect the exact user hexes without changing the honeycomb community layout."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "5746c0dce8de2c2e8a7a6887610614e59d439480225444f5312f2f3d1920b8b1",
+    "source": "https://visbricks.github.io/editor/?case=retweet-community-hexbin-links",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "93d7ff24677b3e797403293cf9154c3515baafdd9b361578de642901bb974b8f",
+      "width": 384,
+      "height": 337
+    }
+  }
+}

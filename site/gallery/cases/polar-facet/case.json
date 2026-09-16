@@ -117,6 +117,12 @@
     "path": "preview.svg",
     "sha256": "b88e87b8b9cb836275f9bdd2eac8254641b34813274532adf9388fc4d5f738f4",
     "source": "https://visbricks.github.io/editor/?case=chord-circular-stacked-facet-concat",
-    "capturedOn": "2026-09-15"
+    "capturedOn": "2026-09-15",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "86b9391bbdff2ee68a5f74523009816091aac8d2d83e33efb4284f25081ed1ff",
+      "width": 135,
+      "height": 135
+    }
   }
 }

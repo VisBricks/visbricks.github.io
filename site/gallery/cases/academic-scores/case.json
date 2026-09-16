@@ -147,8 +147,14 @@
   },
   "preview": {
     "path": "preview.svg",
-    "sha256": "f2a7f5f145d481c6e9ffae3cf3990af4b4bdd4f6daf7dfdd1c83d18769bcbce6",
+    "sha256": "92a1ec5e8222f446023d7ebc0c03749ff41144a7652971163be89b82862e3a31",
     "source": "https://visbricks.github.io/editor/?case=academic-scores-nested-concat",
-    "capturedOn": "2026-09-15"
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "dc965f3e2c9ff50fb2a9c96dca9fd78b377ab47a995b1006b89bc68eed2bd64f",
+      "width": 384,
+      "height": 318
+    }
   }
 }

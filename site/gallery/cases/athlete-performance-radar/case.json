@@ -1,0 +1,116 @@
+{
+  "slug": "athlete-performance-radar",
+  "starter": "athlete-performance-radar",
+  "completedCase": "athlete-performance-radar-angular-concat",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "RadarChart",
+      "bindings": {
+        "theta": "metric",
+        "radius": "score",
+        "series": "athlete"
+      }
+    },
+    {
+      "chartType": "RadialBarChart",
+      "bindings": {
+        "segment": "metric",
+        "radius": "training_load",
+        "color": "athlete"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "concat",
+      "direction": "angular",
+      "placement": "after",
+      "sharedChannels": [
+        "radius"
+      ],
+      "members": [
+        "RadarChart",
+        "RadialBarChart"
+      ]
+    }
+  ],
+  "expectedRender": {
+    "athletes": 4,
+    "metrics": 6,
+    "radarValues": 24,
+    "radialBars": 24
+  },
+  "data": [
+    "data/athlete_metrics.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "11",
+    "title": "Athlete Performance Compass",
+    "description": "Four athlete profiles and their training loads split one polar plane into complementary angular views.",
+    "tags": [
+      "Radar",
+      "Polar",
+      "Angular Concat"
+    ],
+    "blocks": [
+      "Radar Chart",
+      "Radial Bar"
+    ],
+    "coordinateSystems": [
+      "Polar"
+    ],
+    "file": {
+      "type": "LONG CSV",
+      "name": "athlete_metrics.csv",
+      "description": "Twenty-four athlete-metric observations with performance score, training load, and session count.",
+      "files": [
+        "athlete_metrics.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "metric",
+        "role": "Radar theta · sector category"
+      },
+      {
+        "field": "score",
+        "role": "Radar radius"
+      },
+      {
+        "field": "training_load",
+        "role": "Radial Bar radius"
+      },
+      {
+        "field": "athlete",
+        "role": "Profile series · color"
+      }
+    ],
+    "composition": "Angularly concatenate Radar and Radial Bar views so they share the radial scale and center.",
+    "editorHelp": {
+      "introduction": "All blocks are already bound to the case-owned data and placed independently on the starter canvas.",
+      "steps": [
+        {
+          "title": "Build the composition",
+          "source": "Prepared blocks on the canvas",
+          "target": "The highlighted composition drop zone",
+          "action": "Angularly concatenate Radar and Radial Bar views so they share the radial scale and center.",
+          "result": "The blocks form the finished Gallery composition while retaining their configured data bindings."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "40ee79f8a8b5ccc880e4cebe3f52e2ebbeef61babdb76f1b7cbd127f2d63fd3e",
+    "source": "https://visbricks.github.io/editor/?case=athlete-performance-radar-angular-concat",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "eae4fb5ae5c6bbd0e5757f39d4236b60037cc3cf71342e3f920ce5295be36326",
+      "width": 384,
+      "height": 384
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "slug": "island-logistics-map",
+  "starter": "island-logistics-map",
+  "completedCase": "island-logistics-map-layer-nested-bars",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "PolygonLayer",
+      "bindings": {
+        "idField": "island_id",
+        "geometry": "islands.geojson",
+        "color": "activity"
+      }
+    },
+    {
+      "chartType": "ScatterplotLayer",
+      "bindings": {
+        "idField": "island_id",
+        "geometry": "islands.geojson"
+      }
+    },
+    {
+      "chartType": "StackedBarChart",
+      "bindings": {
+        "x": "month",
+        "yFold": [
+          "cargo",
+          "passenger",
+          "relief"
+        ]
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "layer",
+      "target": "PolygonLayer",
+      "source": "ScatterplotLayer"
+    },
+    {
+      "type": "nested",
+      "parent": "ScatterplotLayer",
+      "child": "StackedBarChart",
+      "target": "all 8 hubs",
+      "inheritedFilter": "island_id"
+    }
+  ],
+  "expectedRender": {
+    "polygonFeatures": 8,
+    "scatterplotNodes": 8,
+    "nestedBars": 8,
+    "monthsPerBar": 6,
+    "seriesPerBar": 3,
+    "barSegments": 144
+  },
+  "data": [
+    "data/island_activity.csv",
+    "data/island_nodes.csv",
+    "data/island_links.csv",
+    "data/islands.geojson"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "16",
+    "title": "Island Logistics Map",
+    "description": "Eight fictional islands combine territorial activity, logistics hubs, and six-month transport profiles in one geographic composition.",
+    "tags": [
+      "Geographic",
+      "Layer",
+      "Nested"
+    ],
+    "blocks": [
+      "Polygon",
+      "Scatterplot",
+      "Stacked Bar"
+    ],
+    "coordinateSystems": [
+      "Geographic",
+      "Cartesian"
+    ],
+    "file": {
+      "type": "CSV + GRAPH CSV PAIR + GEOJSON",
+      "name": "island_activity.csv + island graph + islands.geojson",
+      "description": "Case-owned mock island polygons, activity totals, monthly hub observations, and weighted sea-lane links.",
+      "files": [
+        "island_activity.csv",
+        "island_nodes.csv",
+        "island_links.csv",
+        "islands.geojson"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "id",
+        "role": "Graph node identity"
+      },
+      {
+        "field": "island_id",
+        "role": "CSV-to-GeoJSON join and nested context"
+      },
+      {
+        "field": "activity",
+        "role": "Polygon color"
+      },
+      {
+        "field": "month",
+        "role": "Nested Stacked Bar X"
+      },
+      {
+        "field": "cargo · passenger · relief",
+        "role": "Nested transport stack"
+      }
+    ],
+    "composition": "Layer the geographic Scatterplot over the island Polygon map, then nest a six-month Stacked Bar at every island hub. Each chart inherits island_id and stays connected to its source point.",
+    "editorHelp": {
+      "introduction": "Polygon, geographic Scatterplot, and Stacked Bar blocks are bound and independent.",
+      "steps": [
+        {
+          "title": "Layer the hub map",
+          "source": "Scatterplot map",
+          "target": "Polygon map",
+          "action": "Drag the Scatterplot into the Polygon map and release when Layer highlights.",
+          "result": "Island activity and hub points share one map."
+        },
+        {
+          "title": "Nest transport profiles",
+          "source": "Stacked Bar",
+          "target": "A hub point inside the layered map",
+          "action": "Enter the Scatterplot point level and release the bar on a hub.",
+          "result": "Every island gets a filtered six-month transport profile."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "2968790bbc81a6c55cd6a665cb268f5d542a77dc806ebb05c9994148a92c39a7",
+    "source": "https://visbricks.github.io/editor/?case=island-logistics-map-layer-nested-bars",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "fcc3e22c26b2a6d3f2646f0ed30496516934dc6a53bb51e6ed846a7509e45702",
+      "width": 384,
+      "height": 324
+    }
+  }
+}

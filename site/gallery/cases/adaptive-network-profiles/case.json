@@ -1,0 +1,150 @@
+{
+  "slug": "adaptive-network-profiles",
+  "starter": "adaptive-network-profiles",
+  "completedCase": "force-network-typed-nested-charts",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "ForceDirectedGraph",
+      "bindings": {
+        "key": "node_id",
+        "source": "source",
+        "target": "target",
+        "color": "node_type",
+        "size": "influence"
+      }
+    },
+    {
+      "chartType": "StackedBarChart",
+      "bindings": {
+        "x": "period",
+        "valueFold": [
+          "engagement",
+          "reach",
+          "response"
+        ]
+      }
+    },
+    {
+      "chartType": "LineGraph",
+      "bindings": {
+        "x": "period",
+        "y": "signal"
+      }
+    },
+    {
+      "chartType": "MatrixDiagram",
+      "bindings": {
+        "x": "grid_x",
+        "y": "grid_y",
+        "color": "intensity"
+      }
+    },
+    {
+      "chartType": "RadarChart",
+      "bindings": {
+        "theta": "metric",
+        "radius": "value"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "nested",
+      "parent": "ForceDirectedGraph node",
+      "child": "type-selected chart",
+      "target": "four nodes per node_type with node_id filter"
+    }
+  ],
+  "expectedRender": {
+    "forceNodes": 16,
+    "links": 32,
+    "nestedBars": 4,
+    "nestedLines": 4,
+    "nestedHeatmaps": 4,
+    "nestedRadars": 4
+  },
+  "data": [
+    "data/network_nodes.csv",
+    "data/network_edges.csv",
+    "data/bar_profiles.csv",
+    "data/line_profiles.csv",
+    "data/heatmap_profiles.csv",
+    "data/radar_profiles.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "08",
+    "title": "Adaptive Network Profiles",
+    "description": "A force network dispatches four node classes to bars, lines, local heatmaps, or radars, each with a type-specific frame.",
+    "tags": [
+      "Nested",
+      "Force",
+      "Conditional"
+    ],
+    "blocks": [
+      "Force-Directed Graph",
+      "Stacked Bar",
+      "Line Chart",
+      "Matrix Heatmap",
+      "Radar Chart"
+    ],
+    "coordinateSystems": [
+      "Coordinate Free",
+      "Cartesian",
+      "Polar"
+    ],
+    "file": {
+      "type": "GRAPH + PROFILE CSVs",
+      "name": "network_nodes.csv",
+      "description": "16 typed nodes and 32 links plus node-keyed time, grid, and radial profiles.",
+      "files": [
+        "network_nodes.csv",
+        "network_edges.csv",
+        "bar_profiles.csv",
+        "line_profiles.csv",
+        "heatmap_profiles.csv",
+        "radar_profiles.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "node_type",
+        "role": "Nested child selector"
+      },
+      {
+        "field": "node_id",
+        "role": "Per-child filter"
+      },
+      {
+        "field": "layout_x · layout_y",
+        "role": "Stable Force layout"
+      }
+    ],
+    "composition": "Filter Force node targets by node_type, nest the matching chart only on those nodes, and wrap rectangular charts in rounded frames while Radar charts use circular frames.",
+    "editorHelp": {
+      "introduction": "The starter exposes the Force graph and four independently bound child blocks.",
+      "steps": [
+        {
+          "title": "Apply typed Nested batches",
+          "source": "Each child chart",
+          "target": "Force nodes with its node_type",
+          "action": "Use a target subset and filter each cloned child by node_id.",
+          "result": "All 16 nodes become distinct, data-rich chart glyphs."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "6afbe7c685df040308d8325cb51dd516129d1f9ec7ff6d823bd5e4e7f1214b3f",
+    "source": "https://visbricks.github.io/editor/?case=force-network-typed-nested-charts",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "d2abade096d241f36c0b7ce8b7b6af53735ac12fce7dd517aa654917b8602451",
+      "width": 384,
+      "height": 273
+    }
+  }
+}

@@ -1,0 +1,9 @@
+source,target,value,topic
+Discover,Evaluate,42,Awareness
+Discover,Discuss,30,Community
+Evaluate,Adopt,28,Trust
+Evaluate,Reject,14,Risk
+Discuss,Adopt,21,Advocacy
+Discuss,Reconsider,12,Reflection
+Reconsider,Adopt,9,Evidence
+Reconsider,Reject,7,Concern

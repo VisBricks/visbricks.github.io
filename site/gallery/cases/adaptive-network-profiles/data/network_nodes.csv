@@ -1,0 +1,17 @@
+node_id,node_type,community,influence,layout_x,layout_y
+N01,bar,Cluster A,42,0.500,0.120
+N02,bar,Cluster A,55,0.611,0.232
+N03,bar,Cluster A,68,0.769,0.231
+N04,bar,Cluster A,81,0.768,0.389
+N05,line,Cluster B,45,0.880,0.500
+N06,line,Cluster B,58,0.768,0.611
+N07,line,Cluster B,71,0.769,0.769
+N08,line,Cluster B,84,0.611,0.768
+N09,heatmap,Cluster C,48,0.500,0.880
+N10,heatmap,Cluster C,61,0.389,0.768
+N11,heatmap,Cluster C,74,0.231,0.769
+N12,heatmap,Cluster C,87,0.232,0.611
+N13,radar,Cluster D,51,0.120,0.500
+N14,radar,Cluster D,64,0.232,0.389
+N15,radar,Cluster D,77,0.231,0.231
+N16,radar,Cluster D,90,0.389,0.232

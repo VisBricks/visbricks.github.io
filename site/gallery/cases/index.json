@@ -4,5 +4,15 @@
   "geographic-network",
   "polar-facet",
   "matrix-network",
-  "tree-leaf-axis"
+  "tree-leaf-axis",
+  "axis-distribution-profiles",
+  "adaptive-network-profiles",
+  "retweet-community-hexbin",
+  "keyword-flow-sankey",
+  "athlete-performance-radar",
+  "forest-carbon-rings",
+  "climate-risk-dashboard",
+  "customer-journey-constellation",
+  "research-collaboration-network",
+  "island-logistics-map"
 ]

@@ -1,0 +1,133 @@
+{
+  "slug": "customer-journey-constellation",
+  "starter": "customer-journey-constellation",
+  "completedCase": "customer-journey-constellation-nested-concat",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "Scatterplot",
+      "bindings": {
+        "x": "satisfaction",
+        "y": "effort",
+        "color": "stage",
+        "size": "engagement"
+      }
+    },
+    {
+      "chartType": "MultipleBoxplot",
+      "bindings": {
+        "x": "stage",
+        "y": "duration_days",
+        "color": "segment"
+      }
+    },
+    {
+      "chartType": "PieChart",
+      "bindings": {
+        "thetaFold": [
+          "web",
+          "store",
+          "advisor"
+        ],
+        "radius": "engagement"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "nested",
+      "parent": "Scatterplot",
+      "child": "PieChart",
+      "target": "all touchpoints"
+    },
+    {
+      "type": "concat",
+      "direction": "horizontal",
+      "sharedChannels": [
+        "y"
+      ],
+      "before": "Scatterplot",
+      "after": "MultipleBoxplot"
+    }
+  ],
+  "expectedRender": {
+    "scatterPoints": 72,
+    "nestedPies": 72,
+    "pieArcs": 216,
+    "boxplotGroups": 6
+  },
+  "data": [
+    "data/customer_journey.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "14",
+    "title": "Customer Journey Constellation",
+    "description": "Nested channel pies map customer touchpoints by satisfaction and effort, aligned with stage-level duration distributions.",
+    "tags": [
+      "Journey",
+      "Nested",
+      "Boxplot"
+    ],
+    "blocks": [
+      "Scatterplot",
+      "Pie Chart",
+      "Multiple Boxplot"
+    ],
+    "coordinateSystems": [
+      "Cartesian",
+      "Polar"
+    ],
+    "file": {
+      "type": "WIDE CSV",
+      "name": "customer_journey.csv",
+      "description": "Seventy-two touchpoints spanning six journey stages, three segments, and three engagement channels.",
+      "files": [
+        "customer_journey.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "satisfaction · effort",
+        "role": "Scatterplot axes"
+      },
+      {
+        "field": "web · store · advisor",
+        "role": "Nested Pie slices"
+      },
+      {
+        "field": "duration_days · stage",
+        "role": "Boxplot value and group"
+      },
+      {
+        "field": "effort",
+        "role": "Shared Y scale"
+      }
+    ],
+    "composition": "Nest channel Pies into touchpoints, then horizontally concatenate the stage Boxplot on a shared quantitative Y scale.",
+    "editorHelp": {
+      "introduction": "All blocks are already bound to the case-owned data and placed independently on the starter canvas.",
+      "steps": [
+        {
+          "title": "Build the composition",
+          "source": "Prepared blocks on the canvas",
+          "target": "The highlighted composition drop zone",
+          "action": "Nest channel Pies into touchpoints, then horizontally concatenate the stage Boxplot on a shared quantitative Y scale.",
+          "result": "The blocks form the finished Gallery composition while retaining their configured data bindings."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "72c8d4bb190241b4a8055211702b8f9e934c4b453f47470f6cb5551e47a8e45f",
+    "source": "https://visbricks.github.io/editor/?case=customer-journey-constellation-nested-concat",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "cabda296f7e6f5937f7a0334620291fa19fe34e5efc7699f4423da5f9cf999f3",
+      "width": 384,
+      "height": 206
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "slug": "research-collaboration-network",
+  "starter": "research-collaboration-network",
+  "completedCase": "research-collaboration-network-nested-profiles",
+  "status": "complete",
+  "blocks": [
+    {
+      "chartType": "ForceDirectedGraph",
+      "bindings": {
+        "key": "lab_id",
+        "source": "source",
+        "target": "target",
+        "value": "collaboration",
+        "color": "discipline",
+        "size": "funding"
+      }
+    },
+    {
+      "chartType": "AreaChart",
+      "bindings": {
+        "x": "month",
+        "y": "output"
+      }
+    }
+  ],
+  "composition": [
+    {
+      "type": "nested",
+      "parent": "ForceDirectedGraph",
+      "child": "AreaChart",
+      "target": "all 12 nodes",
+      "inheritedFilter": "lab_id",
+      "retainParent": false
+    }
+  ],
+  "expectedRender": {
+    "forceNodes": 12,
+    "forceLinks": 18,
+    "nestedAreas": 12,
+    "pointsPerArea": 6
+  },
+  "data": [
+    "data/research_nodes.csv",
+    "data/research_links.csv",
+    "data/research_profiles.csv"
+  ],
+  "configuration": "configure.js",
+  "gallery": {
+    "number": "15",
+    "title": "Research Collaboration Network",
+    "description": "A force-directed network connects twelve research labs; each node is replaced by a six-month output profile.",
+    "tags": [
+      "Force Network",
+      "Nested",
+      "Profiles"
+    ],
+    "blocks": [
+      "Force-Directed Graph",
+      "Area Chart"
+    ],
+    "coordinateSystems": [
+      "CoordinateFree",
+      "Cartesian"
+    ],
+    "file": {
+      "type": "GRAPH CSV PAIR",
+      "name": "research_nodes.csv + research_links.csv + research_profiles.csv",
+      "description": "Twelve lab nodes and eighteen weighted collaboration links paired with six monthly output observations per lab.",
+      "files": [
+        "research_nodes.csv",
+        "research_links.csv",
+        "research_profiles.csv"
+      ]
+    },
+    "bindings": [
+      {
+        "field": "lab_id · source · target",
+        "role": "Force node and edge identity"
+      },
+      {
+        "field": "collaboration",
+        "role": "Link value"
+      },
+      {
+        "field": "discipline · funding",
+        "role": "Node color and size"
+      },
+      {
+        "field": "month · output",
+        "role": "Nested Area profile"
+      },
+      {
+        "field": "lab_id",
+        "role": "Inherited nested filter"
+      }
+    ],
+    "composition": "Enter the Force Network’s node level and nest the Area Chart onto all twelve labs. Each repeated child inherits lab_id and keeps that lab’s six monthly observations.",
+    "editorHelp": {
+      "introduction": "The force network and monthly Area Chart are fully bound.",
+      "steps": [
+        {
+          "title": "Nest the profiles",
+          "source": "Area Chart",
+          "target": "Any Force Network node",
+          "action": "Drag the Area Chart through the network’s Enter target and release on a node when all node targets highlight.",
+          "result": "Twelve filtered monthly profiles replace the original node marks."
+        }
+      ]
+    }
+  },
+  "preview": {
+    "path": "preview.svg",
+    "sha256": "8ca8b56a5380844a5b36ed80d1dfa021ecb37b4eeacf8e968ad297fe1cd84cee",
+    "source": "https://visbricks.github.io/editor/?case=research-collaboration-network-nested-profiles",
+    "capturedOn": "2026-09-16",
+    "thumbnail": {
+      "path": "thumbnail.png",
+      "sha256": "ee81a9f32c80d084f4d5562e3e0c1a3c70337b5391df6fa6213a84d0fc1f7069",
+      "width": 384,
+      "height": 297
+    }
+  }
+}
